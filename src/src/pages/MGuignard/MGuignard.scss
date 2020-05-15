@@ -1,13 +1,27 @@
 .m-guignard {
-  h4 {
-    text-align: center;
-  }
-
   .limericks {
     font-family: 'Yellowtail', cursive;
 
-    h4 {
-      font-size: 4em;
+    .limericks-title {
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+
+      div {
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 100%;
+
+        h4 {
+          font-size: 4em;
+        }
+
+        button {
+          box-shadow: none;
+        }
+      }
     }
 
     .carousel {

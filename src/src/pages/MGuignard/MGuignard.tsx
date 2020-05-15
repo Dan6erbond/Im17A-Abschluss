@@ -1,7 +1,10 @@
 import * as React from "react";
-import {Carousel, Container} from "react-bootstrap";
+import {Button, Carousel, Container} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
 
 import "./MGuignard.scss";
+import {RefObject} from "react";
 
 const limericks = [
     {
@@ -54,28 +57,39 @@ function shuffleArray(array: any[]) {
 }
 
 export default function MGuignard() {
+    const scrollToRef = (ref: RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
+
+    const limericksRef = React.createRef<HTMLDivElement>();
+
     return (
         <div className="m-guignard">
             <div className="limericks">
-                <Container fluid="md">
-                    <br/>
-                    <h4>Limericks</h4>
-                    <br/>
-                </Container>
+                <div className="limericks-title">
+                    <div>
+                        <h4>Limericks</h4>
+                        <Button onClick={() => scrollToRef(limericksRef)} variant="outline-dark">
+                            <FontAwesomeIcon icon={faPenFancy} style={{height: '55px', width: '55px'}}/>
+                            <br/>
+                            <span style={{fontSize: '24px'}}>Scroll Down</span>
+                        </Button>
+                    </div>
+                </div>
 
-                <Carousel>
-                    {shuffleArray(limericks).map((l, i) => <Carousel.Item>
-                        <div>
+                <div ref={limericksRef}>
+                    <Carousel>
+                        {shuffleArray(limericks).map((l, i) => <Carousel.Item>
                             <div>
-                                <p>
-                                    {l.text.split("\n").map((t: string, j: number) => <span>{t}<br/></span>)}
-                                </p>
+                                <div>
+                                    <p>
+                                        {l.text.split("\n").map((t: string, j: number) => <span>{t}<br/></span>)}
+                                    </p>
 
-                                <p> - {l.author}</p>
+                                    <p> - {l.author}</p>
+                                </div>
                             </div>
-                        </div>
-                    </Carousel.Item>)}
-                </Carousel>
+                        </Carousel.Item>)}
+                    </Carousel>
+                </div>
             </div>
         </div>
     );
