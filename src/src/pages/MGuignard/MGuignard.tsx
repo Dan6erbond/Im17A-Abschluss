@@ -1,6 +1,8 @@
 import * as React from "react";
 import {Carousel, Container} from "react-bootstrap";
 
+import "./MGuignard.scss";
+
 const limericks = [
     {
         author: "Dominik Berger",
@@ -53,21 +55,28 @@ function shuffleArray(array: any[]) {
 
 export default function MGuignard() {
     return (
-        <React.Fragment>
-            <Carousel style={{background: '#000'}}>
-                {shuffleArray(limericks).map((l, i) => <Carousel.Item>
-                    <div style={{padding: '50px', textAlign: 'center', fontSize: '16px', color: 'white'}}>
-                        <p style={{fontFamily: 'Yellowtail', fontSize: '4vw'}}>
-                            {l.text.split("\n").map((t: string, j: number) => <span>{t}<br/></span>)}
-                        </p>
+        <div className="m-guignard">
+            <div className="limericks">
+                <Container fluid="md">
+                    <br/>
+                    <h4>Limericks</h4>
+                    <br/>
+                </Container>
 
-                        <p> - {l.author}</p>
-                    </div>
-                </Carousel.Item>)}
-            </Carousel>
+                <Carousel>
+                    {shuffleArray(limericks).map((l, i) => <Carousel.Item>
+                        <div>
+                            <div>
+                                <p>
+                                    {l.text.split("\n").map((t: string, j: number) => <span>{t}<br/></span>)}
+                                </p>
 
-            <Container fluid="md">
-            </Container>
-        </React.Fragment>
+                                <p> - {l.author}</p>
+                            </div>
+                        </div>
+                    </Carousel.Item>)}
+                </Carousel>
+            </div>
+        </div>
     );
 }

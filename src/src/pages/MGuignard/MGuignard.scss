@@ -1,0 +1,45 @@
+.m-guignard {
+  h4 {
+    text-align: center;
+  }
+
+  .limericks {
+    font-family: 'Yellowtail', cursive;
+
+    h4 {
+      font-size: 4em;
+    }
+
+    .carousel {
+      width: 100%;
+      background: #535353;
+
+      .carousel-inner {
+
+        .carousel-item {
+
+          &> div {
+            position: relative;
+            min-height: 100vh;
+
+            div {
+              padding: 50px;
+              text-align: center;
+              font-size: 16px;
+              color: #fffde6;
+              position: absolute;
+              top: 50%;
+              -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+              width: 100%;
+
+              p {
+                font-size: 4vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
