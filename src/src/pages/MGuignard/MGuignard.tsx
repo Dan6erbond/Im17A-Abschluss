@@ -5,6 +5,7 @@ import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
 
 import "./MGuignard.scss";
 import {RefObject} from "react";
+import Banner from "../../components/Banner/Banner";
 
 const limericks = [
     {
@@ -63,6 +64,8 @@ export default function MGuignard() {
 
     return (
         <div className="m-guignard">
+            <Banner text="Thank you for the wonderful three years, Ms Guignard!"/>
+
             <div className="limericks">
                 <div className="limericks-title">
                     <div>
