@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Carousel, Container} from "react-bootstrap";
+import {Button, Carousel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
 
