@@ -2,9 +2,11 @@ import * as React from "react";
 import {Button, Carousel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGlassCheers, faPenFancy} from "@fortawesome/free-solid-svg-icons";
-
 import "./MGuignard.scss";
 import {RefObject} from "react";
+import VizSensor from "react-visibility-sensor";
+import {motion} from "framer-motion";
+
 import Banner from "../../components/Banner/Banner";
 
 const limericks = [
@@ -34,7 +36,7 @@ const limericks = [
     },
     {
         author: "Tim Mosbacher",
-        text:"There was once a man riding a bear\nHe was the american nightmare\nPutin was the name\noff the person playing the war game\nBut nobody knows, that he sells selfmade knightwear."
+        text: "There was once a man riding a bear\nHe was the american nightmare\nPutin was the name\noff the person playing the war game\nBut nobody knows, that he sells selfmade knightwear."
     },
     {
         author: "Aron Eggenberger",
@@ -42,7 +44,7 @@ const limericks = [
     },
     {
         author: "RaviAnand Mohabir",
-        text:"There was a country of Azerbaijan,\nwhere Dominik had gone.\nHe was met by some Arabs,\nthat put him on some camels.\nNow he is the new Khan."
+        text: "There was a country of Azerbaijan,\nwhere Dominik had gone.\nHe was met by some Arabs,\nthat put him on some camels.\nNow he is the new Khan."
     }
 ];
 
@@ -60,39 +62,85 @@ function shuffleArray(array: any[]) {
 export default function MGuignard() {
     const scrollToRef = (ref: RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
 
+    const [bannerVisible, setBannerVisible] = React.useState<boolean>(false);
+    const [limericksTitleVisible, setLimericksTitleVisible] = React.useState<boolean>(false);
+
     const limericksTitleRef = React.createRef<HTMLDivElement>();
     const limericksRef = React.createRef<HTMLDivElement>();
 
     return (
         <div className="m-guignard">
             <Banner>
-                <h2>Thank you for the wonderful three years, Ms Guignard!</h2>
-                <Button onClick={() => scrollToRef(limericksTitleRef)} variant="outline-dark">
-                    <FontAwesomeIcon icon={faGlassCheers} style={{height: '55px', width: '55px'}}/>
-                    <br/>
-                    <span style={{fontSize: '24px'}}>Scroll Down</span>
-                </Button>
+                <VizSensor partialVisibility onChange={isVisible => {
+                    if (isVisible && !bannerVisible)
+                        setBannerVisible(true);
+                }}>
+                    <motion.div initial="hidden" animate={bannerVisible ? "visible" : "hidden"} variants={{
+                        hidden: {
+                            opacity: 0
+                        },
+                        visible: {
+                            opacity: 1
+                        }
+                    }} transition={{duration: 1}}>
+                        <motion.h2 variants={{
+                            hidden: {
+                                translateY: '-40%'
+                            },
+                            visible: {
+                                translateY: 0
+                            }
+                        }} transition={{duration: 1}}>Thank you for the wonderful three years, Ms Guignard!
+                        </motion.h2>
+                        <Button onClick={() => scrollToRef(limericksTitleRef)} variant="outline-dark">
+                            <FontAwesomeIcon icon={faGlassCheers} style={{height: '55px', width: '55px'}}/>
+                            <br/>
+                            <span style={{fontSize: '24px'}}>Scroll Down</span>
+                        </Button>
+                    </motion.div>
+                </VizSensor>
             </Banner>
 
             <div className="limericks">
                 <div ref={limericksTitleRef} className="limericks-title">
-                    <div>
-                        <h4>Limericks</h4>
-                        <Button onClick={() => scrollToRef(limericksRef)} variant="outline-dark">
-                            <FontAwesomeIcon icon={faPenFancy} style={{height: '55px', width: '55px'}}/>
-                            <br/>
-                            <span style={{fontSize: '24px'}}>Scroll Down</span>
-                        </Button>
-                    </div>
+                    <VizSensor partialVisibility onChange={isVisible => {
+                        if (isVisible && !limericksTitleVisible)
+                            setLimericksTitleVisible(true);
+                    }}>
+                        <motion.div initial="hidden" animate={limericksTitleVisible ? "visible" : "hidden"} variants={{
+                            hidden: {
+                                opacity: 0
+                            },
+                            visible: {
+                                opacity: 1
+                            }
+                        }} transition={{duration: 1}}>
+                            <motion.h4 variants={{
+                                hidden: {
+                                    translateY: '-40%'
+                                },
+                                visible: {
+                                    translateY: 0
+                                }
+                            }} transition={{duration: 1}}>Limericks
+                            </motion.h4>
+                            <Button onClick={() => scrollToRef(limericksRef)} variant="outline-dark">
+                                <FontAwesomeIcon icon={faPenFancy} style={{height: '55px', width: '55px'}}/>
+                                <br/>
+                                <span style={{fontSize: '24px'}}>Scroll Down</span>
+                            </Button>
+                        </motion.div>
+                    </VizSensor>
                 </div>
 
                 <div ref={limericksRef}>
-                    <Carousel>
-                        {shuffleArray(limericks).map((l, i) => <Carousel.Item>
+                    <Carousel fade>
+                        {shuffleArray(limericks).map((l, i) => <Carousel.Item key={i}>
                             <div>
                                 <div>
                                     <p>
-                                        {l.text.split("\n").map((t: string, j: number) => <span>{t}<br/></span>)}
+                                        {l.text.split("\n").map((t: string, j: number) => <span
+                                            key={j}>{t}<br/></span>)}
                                     </p>
 
                                     <p> - {l.author}</p>
