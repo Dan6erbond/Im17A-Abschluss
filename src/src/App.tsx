@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route, Switch} from "react-router";
+import MGuignard from "./pages/MGuignard/MGuignard";
 
 function App() {
     return (
@@ -8,7 +9,7 @@ function App() {
                 <div>Matthias Graf</div>
             </Route>
             <Route path="/N6bmxqI">
-                <div>Marielle Guignard</div>
+                <MGuignard/>
             </Route>
             <Route path="/SWH6Yjq">
                 <div>Lil Klink</div>
