@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Button, Carousel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
+import {faGlassCheers, faPenFancy} from "@fortawesome/free-solid-svg-icons";
 
 import "./MGuignard.scss";
 import {RefObject} from "react";
@@ -60,14 +60,22 @@ function shuffleArray(array: any[]) {
 export default function MGuignard() {
     const scrollToRef = (ref: RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
 
+    const limericksTitleRef = React.createRef<HTMLDivElement>();
     const limericksRef = React.createRef<HTMLDivElement>();
 
     return (
         <div className="m-guignard">
-            <Banner text="Thank you for the wonderful three years, Ms Guignard!"/>
+            <Banner>
+                <h2>Thank you for the wonderful three years, Ms Guignard!</h2>
+                <Button onClick={() => scrollToRef(limericksTitleRef)} variant="outline-dark">
+                    <FontAwesomeIcon icon={faGlassCheers} style={{height: '55px', width: '55px'}}/>
+                    <br/>
+                    <span style={{fontSize: '24px'}}>Scroll Down</span>
+                </Button>
+            </Banner>
 
             <div className="limericks">
-                <div className="limericks-title">
+                <div ref={limericksTitleRef} className="limericks-title">
                     <div>
                         <h4>Limericks</h4>
                         <Button onClick={() => scrollToRef(limericksRef)} variant="outline-dark">

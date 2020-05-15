@@ -1,4 +1,9 @@
 .m-guignard {
+  button {
+    border: none;
+    font-family: 'Yellowtail', cursive;
+  }
+
   .limericks {
     font-family: 'Yellowtail', cursive;
 
@@ -17,10 +22,6 @@
         h4 {
           font-size: 4em;
         }
-
-        button {
-          border: none;
-        }
       }
     }
 
@@ -32,7 +33,7 @@
 
         .carousel-item {
 
-          &> div {
+          & > div {
             position: relative;
             min-height: 100vh;
 
