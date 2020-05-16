@@ -75,7 +75,8 @@ export default function KinderEgg(props: KinderEggProps) {
                                                 height={eggTopHeight}
                                                 width={eggTopWidth}
                                                 ref={eggTopRef}
-                                                onClick={() => setOpen(true)}/>
+                                                onClick={() => setOpen(true)}
+                                                onTouchStart={() => setOpen(true)}/>
                             )}
                         </Spring>
                         <Image x={47}
@@ -83,7 +84,8 @@ export default function KinderEgg(props: KinderEggProps) {
                                image={eggBottom}
                                height={eggBottomHeight}
                                width={eggBottomWidth}
-                               onClick={() => setOpen(true)}/>
+                               onClick={() => setOpen(true)}
+                               onTouchStart={() => setOpen(true)}/>
                     </Layer>
                 </Stage>
             </VizSensor>
