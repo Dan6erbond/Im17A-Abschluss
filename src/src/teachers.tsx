@@ -1,5 +1,6 @@
 import React from "react";
 import MGuignard from "./pages/MGuignard/MGuignard";
+import FJerg from "./pages/FJerg/FJerg";
 
 export const teachers = [
     {
@@ -46,6 +47,7 @@ export const teachers = [
     {
         name: "Fabian Jerg",
         path: "DSraT8n",
+        component: <FJerg/>,
         img: null
     },
     {

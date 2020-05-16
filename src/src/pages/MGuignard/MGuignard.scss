@@ -1,4 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
 .m-guignard {
+  button {
+    border: none;
+    font-family: 'Yellowtail', cursive;
+  }
+
+  .banner {
+    .late-text {
+      font-family: 'Balsamiq Sans', cursive;
+      font-size: 24px;
+    }
+  }
+
   .limericks {
     font-family: 'Yellowtail', cursive;
 
@@ -17,22 +33,15 @@
         h4 {
           font-size: 4em;
         }
-
-        button {
-          border: none;
-        }
       }
     }
 
     .carousel {
-      width: 100%;
       background: #535353;
 
       .carousel-inner {
-
         .carousel-item {
-
-          &> div {
+          & > div {
             position: relative;
             min-height: 100vh;
 
@@ -50,6 +59,47 @@
               p {
                 font-size: 3.5vw;
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .class-trip {
+    .class-trip-title {
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      font-family: 'Squada One', cursive;
+
+      div {
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 100%;
+
+        h4 {
+          font-size: 4em;
+        }
+      }
+    }
+
+    .carousel {
+      background: #535353;
+
+      .carousel-inner {
+        .carousel-item {
+          & > div:first-of-type {
+            position: relative;
+            min-height: 100vh;
+
+            img {
+              position: absolute;
+              top: 50%;
+              -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
             }
           }
         }
