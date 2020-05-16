@@ -1,14 +1,12 @@
 import * as React from "react";
-import {Button, Container} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGlassCheers} from "@fortawesome/free-solid-svg-icons";
-import VizSensor from "react-visibility-sensor";
 import {motion} from "framer-motion";
 import Banner from "../../components/Banner/Banner";
 import Limericks from "./Limericks";
 import ClassTrip from "./ClassTrip";
 
 import "./MGuignard.scss";
+import ScrollButton from "../../components/ScrollButton/ScrollButton";
 
 const lateEvents = [
     {
@@ -53,55 +51,24 @@ export default function MGuignard() {
 
     const [lateEvent] = React.useState<typeof lateEvents[0]>(lateEvents[Math.floor(Math.random() * lateEvents.length)]);
 
-    const [bannerVisible, setBannerVisible] = React.useState<boolean>(false);
-
     const limericksTitleRef = React.createRef<HTMLDivElement>();
 
     return (
         <div className="m-guignard">
-            <Banner>
-                <VizSensor partialVisibility onChange={isVisible => {
-                    if (isVisible && !bannerVisible)
-                        setBannerVisible(true);
-                }}>
-                    <motion.div initial="hidden" animate={bannerVisible ? "visible" : "hidden"} variants={{
-                        hidden: {
-                            opacity: 0
-                        },
-                        visible: {
-                            opacity: 1
-                        }
-                    }} transition={{duration: 1}}>
-                        <Container fluid="md">
-                            <motion.h2 variants={{
-                                hidden: {
-                                    translateY: '-40%'
-                                },
-                                visible: {
-                                    translateY: 0
-                                }
-                            }} transition={{duration: 1}}>
-                                Thank you for the wonderful three years, Ms Guignard!
-                            </motion.h2>
-                            <motion.p variants={{
-                                hidden: {
-                                    translateX: '100%'
-                                },
-                                visible: {
-                                    translateX: 0
-                                }
-                            }} transition={{duration: 0.5}} className="late-text">
-                                PS: You are {getDuration(lateEvent.date, Date.now()).toString()} too late
-                                to {lateEvent.name}.
-                            </motion.p>
-                            <Button onClick={() => scrollToRef(limericksTitleRef)} variant="outline-dark">
-                                <FontAwesomeIcon icon={faGlassCheers} style={{height: '55px', width: '55px'}}/>
-                                <br/>
-                                <span style={{fontSize: '24px'}}>Scroll Down</span>
-                            </Button>
-                        </Container>
-                    </motion.div>
-                </VizSensor>
+            <Banner text="Thank you for the wonderful three years, Ms Guignard!">
+                <motion.p variants={{
+                    hidden: {
+                        translateX: '100%'
+                    },
+                    visible: {
+                        translateX: 0
+                    }
+                }} transition={{duration: 0.5}} className="late-text">
+                    PS: You are {getDuration(lateEvent.date, Date.now()).toString()} too late
+                    to {lateEvent.name}.
+                </motion.p>
+                <ScrollButton scrollRef={limericksTitleRef}
+                              icon={faGlassCheers} text="Scroll Down"/>
             </Banner>
 
             <Limericks limericksTitleRef={limericksTitleRef}/>

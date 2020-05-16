@@ -1,9 +1,9 @@
 import VizSensor from "react-visibility-sensor";
 import {motion} from "framer-motion";
-import {Button, Carousel, Col, Container, Row} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Carousel, Col, Container, Row} from "react-bootstrap";
 import {faBuilding} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
+import ScrollButton from "../../components/ScrollButton/ScrollButton";
 
 const images = [
     "20180924_131103.jpg",
@@ -38,7 +38,7 @@ export default function ClassTrip() {
                         <div>
                             <img
                                 className="d-block w-100"
-                                src={`/res/img/mguignard/frankfurt/${img}`}
+                                src={`./res/img/mguignard/frankfurt/${img}`}
                                 alt={img}
                             />
                         </div>
@@ -93,11 +93,8 @@ export default function ClassTrip() {
                         }} transition={{duration: 1}}>
                             Remember Frankfurt?
                         </motion.h4>
-                        <Button onClick={() => scrollToRef(classTripRef)} variant="outline-dark">
-                            <FontAwesomeIcon icon={faBuilding} style={{height: '55px', width: '55px'}}/>
-                            <br/>
-                            <span style={{fontSize: '24px'}}>Scroll Down</span>
-                        </Button>
+                        <ScrollButton scrollRef={classTripRef}
+                                      icon={faBuilding} text="Scroll Down"/>
                     </motion.div>
                 </VizSensor>
             </div>

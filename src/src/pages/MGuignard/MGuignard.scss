@@ -5,7 +5,8 @@
 .m-guignard {
   button {
     border: none;
-    font-family: 'Yellowtail', cursive;
+    font-family: 'Yellowtail', cursive !important;
+    display: inline-block;
   }
 
   .banner {
@@ -23,7 +24,7 @@
       min-height: 100vh;
       position: relative;
 
-      div {
+      & > div {
         position: absolute;
         top: 50%;
         -ms-transform: translateY(-50%);
@@ -73,7 +74,7 @@
       position: relative;
       font-family: 'Squada One', cursive;
 
-      div {
+      & > div {
         position: absolute;
         top: 50%;
         -ms-transform: translateY(-50%);
