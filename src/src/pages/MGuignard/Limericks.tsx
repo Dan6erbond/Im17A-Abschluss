@@ -4,6 +4,7 @@ import {Button, Carousel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
+import '../../extensions';
 
 const limericks = [
     {
@@ -43,17 +44,6 @@ const limericks = [
         text: "There was a country of Azerbaijan,\nwhere Dominik had gone.\nHe was met by some Arabs,\nthat put him on some camels.\nNow he is the new Khan."
     }
 ];
-
-function shuffleArray(array: any[]) {
-    let i = array.length - 1;
-    for (; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
 
 interface LimericksProps {
     limericksTitleRef: React.RefObject<HTMLDivElement>;
@@ -104,7 +94,7 @@ export default function Limericks (props: LimericksProps) {
 
             <div ref={limericksRef}>
                 <Carousel fade>
-                    {shuffleArray(limericks).map((l, i) => <Carousel.Item key={i}>
+                    {limericks.shuffle().map((l, i) => <Carousel.Item key={i}>
                         <div>
                             <div>
                                 <p>
