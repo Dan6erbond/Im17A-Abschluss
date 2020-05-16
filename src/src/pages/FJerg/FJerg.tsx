@@ -1,6 +1,8 @@
 import * as React from "react";
 import Banner from "../../components/Banner/Banner";
 
+import "./FJerg.scss";
+
 export default function FJerg() {
     return (
         <div className="f-jerg">
