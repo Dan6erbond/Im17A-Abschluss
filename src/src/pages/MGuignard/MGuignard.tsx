@@ -1,13 +1,14 @@
 import * as React from "react";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGlassCheers} from "@fortawesome/free-solid-svg-icons";
+import {faGlassCheers, faPenFancy} from "@fortawesome/free-solid-svg-icons";
 import {motion} from "framer-motion";
 import Banner from "../../components/Banner/Banner";
 import Limericks from "./Limericks";
 import ClassTrip from "./ClassTrip";
 
 import "./MGuignard.scss";
+import ScrollButton from "../../components/ScrollButton/ScrollButton";
 
 const lateEvents = [
     {
@@ -68,11 +69,8 @@ export default function MGuignard() {
                     PS: You are {getDuration(lateEvent.date, Date.now()).toString()} too late
                     to {lateEvent.name}.
                 </motion.p>
-                <Button onClick={() => scrollToRef(limericksTitleRef)} variant="outline-dark">
-                    <FontAwesomeIcon icon={faGlassCheers} style={{height: '55px', width: '55px'}}/>
-                    <br/>
-                    <span style={{fontSize: '24px'}}>Scroll Down</span>
-                </Button>
+                <ScrollButton scrollRef={limericksTitleRef}
+                              icon={faGlassCheers} text="Scroll Down"/>
             </Banner>
 
             <Limericks limericksTitleRef={limericksTitleRef}/>

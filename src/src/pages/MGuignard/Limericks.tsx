@@ -2,9 +2,10 @@ import VizSensor from "react-visibility-sensor";
 import {motion} from "framer-motion";
 import {Button, Carousel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
+import {faBuilding, faPenFancy} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import '../../extensions';
+import ScrollButton from "../../components/ScrollButton/ScrollButton";
 
 const limericks = [
     {
@@ -83,11 +84,8 @@ export default function Limericks (props: LimericksProps) {
                         }} transition={{duration: 1}}>
                             Limericks
                         </motion.h4>
-                        <Button onClick={() => scrollToRef(limericksRef)} variant="outline-dark">
-                            <FontAwesomeIcon icon={faPenFancy} style={{height: '55px', width: '55px'}}/>
-                            <br/>
-                            <span style={{fontSize: '24px'}}>Scroll Down</span>
-                        </Button>
+                        <ScrollButton scrollRef={limericksRef}
+                                      icon={faPenFancy} text="Scroll Down"/>
                     </motion.div>
                 </VizSensor>
             </div>
