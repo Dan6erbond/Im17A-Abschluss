@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
 .m-guignard {
   button {
     border: none;
@@ -53,6 +56,27 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+
+  .class-trip {
+    .class-trip-title {
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      font-family: 'Squada One', cursive;
+
+      div {
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 100%;
+
+        h4 {
+          font-size: 4em;
         }
       }
     }
