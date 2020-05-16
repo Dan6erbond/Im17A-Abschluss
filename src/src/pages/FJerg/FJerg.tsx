@@ -19,36 +19,12 @@ export default function FJerg() {
 
     return (
         <div className="f-jerg">
-            <Banner>
-                <VizSensor partialVisibility onChange={isVisible => {
-                    if (isVisible && !bannerVisible)
-                        setBannerVisible(true);
-                }}>
-                    <motion.div initial="hidden" animate={bannerVisible ? "visible" : "hidden"} variants={{
-                        hidden: {
-                            opacity: 0
-                        },
-                        visible: {
-                            opacity: 1
-                        }
-                    }} transition={{duration: 1}}>
-                        <motion.h2 variants={{
-                            hidden: {
-                                translateY: '-40%'
-                            },
-                            visible: {
-                                translateY: 0
-                            }
-                        }} transition={{duration: 1}}>
-                            Vielen Dank für die tolle Zeit mit Ihnen!
-                        </motion.h2>
-                        <Button onClick={() => scrollToRef(kinderEggRef)} variant="outline-dark">
-                            <FontAwesomeIcon icon={faEgg} style={{height: '55px', width: '55px'}}/>
-                            <br/>
-                            <span style={{fontSize: '24px'}}>Scroll Down</span>
-                        </Button>
-                    </motion.div>
-                </VizSensor>
+            <Banner text="Vielen Dank für die tolle Zeit mit Ihnen!">
+                <Button onClick={() => scrollToRef(kinderEggRef)} variant="outline-dark">
+                    <FontAwesomeIcon icon={faEgg} style={{height: '55px', width: '55px'}}/>
+                    <br/>
+                    <span style={{fontSize: '24px'}}>Runterscrollen</span>
+                </Button>
             </Banner>
             <KinderEgg kinderEggRef={kinderEggRef}/>
         </div>
