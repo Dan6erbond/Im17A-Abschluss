@@ -1,0 +1,18 @@
+@import "~bootstrap/scss/bootstrap";
+
+.scroll-button {
+  @extend .scroll-button;
+  @extend .btn;
+  @extend .btn-outline-dark;
+
+  background: none;
+
+  &:hover {
+    background: none !important;
+    color: #343a40 !important;
+
+    svg {
+      color: #343a40;
+    }
+  }
+}
