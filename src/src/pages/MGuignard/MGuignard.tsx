@@ -1,7 +1,5 @@
 import * as React from "react";
-import {Button} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGlassCheers, faPenFancy} from "@fortawesome/free-solid-svg-icons";
+import {faGlassCheers} from "@fortawesome/free-solid-svg-icons";
 import {motion} from "framer-motion";
 import Banner from "../../components/Banner/Banner";
 import Limericks from "./Limericks";

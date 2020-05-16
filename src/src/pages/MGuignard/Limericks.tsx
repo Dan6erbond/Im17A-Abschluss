@@ -1,8 +1,7 @@
 import VizSensor from "react-visibility-sensor";
 import {motion} from "framer-motion";
-import {Button, Carousel} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBuilding, faPenFancy} from "@fortawesome/free-solid-svg-icons";
+import {Carousel} from "react-bootstrap";
+import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import '../../extensions';
 import ScrollButton from "../../components/ScrollButton/ScrollButton";
