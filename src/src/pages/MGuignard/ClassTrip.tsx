@@ -38,7 +38,7 @@ export default function ClassTrip() {
                         <div>
                             <img
                                 className="d-block w-100"
-                                src={`./res/img/mguignard/frankfurt/${img}`}
+                                src={`/res/img/mguignard/frankfurt/${img}`}
                                 alt={img}
                             />
                         </div>
