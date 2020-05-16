@@ -1,13 +1,14 @@
 import * as React from "react";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGlassCheers, faPenFancy} from "@fortawesome/free-solid-svg-icons";
+import {faGlassCheers} from "@fortawesome/free-solid-svg-icons";
 import VizSensor from "react-visibility-sensor";
 import {motion} from "framer-motion";
 import Banner from "../../components/Banner/Banner";
 import Limericks from "./Limericks";
 
 import "./MGuignard.scss";
+import ClassTrip from "./ClassTrip";
 
 export default function MGuignard() {
     const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
@@ -38,7 +39,8 @@ export default function MGuignard() {
                             visible: {
                                 translateY: 0
                             }
-                        }} transition={{duration: 1}}>Thank you for the wonderful three years, Ms Guignard!
+                        }} transition={{duration: 1}}>
+                            Thank you for the wonderful three years, Ms Guignard!
                         </motion.h2>
                         <Button onClick={() => scrollToRef(limericksTitleRef)} variant="outline-dark">
                             <FontAwesomeIcon icon={faGlassCheers} style={{height: '55px', width: '55px'}}/>
@@ -50,6 +52,8 @@ export default function MGuignard() {
             </Banner>
 
             <Limericks limericksTitleRef={limericksTitleRef}/>
+
+            <ClassTrip/>
         </div>
     );
 }

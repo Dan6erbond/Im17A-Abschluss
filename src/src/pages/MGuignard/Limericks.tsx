@@ -90,7 +90,8 @@ export default function Limericks (props: LimericksProps) {
                             visible: {
                                 translateY: 0
                             }
-                        }} transition={{duration: 1}}>Limericks
+                        }} transition={{duration: 1}}>
+                            Limericks
                         </motion.h4>
                         <Button onClick={() => scrollToRef(limericksRef)} variant="outline-dark">
                             <FontAwesomeIcon icon={faPenFancy} style={{height: '55px', width: '55px'}}/>
