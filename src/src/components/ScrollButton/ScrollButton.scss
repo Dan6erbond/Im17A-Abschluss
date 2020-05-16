@@ -6,6 +6,8 @@
   @extend .btn-outline-dark;
 
   background: none;
+  outline: none;
+  border: none;
 
   &:hover {
     background: none !important;
