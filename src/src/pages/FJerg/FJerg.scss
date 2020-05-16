@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .f-jerg {
+  font-family: 'Bebas Neue', cursive;
+
+  .banner {
+    .banner-content {
+      font-family: 'Bebas Neue', cursive !important;
+    }
+  }
+
   .selecta-machine {
     position: relative;
     min-height: 100vh;
