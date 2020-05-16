@@ -4,10 +4,10 @@ import Home from "./pages/Home/Home";
 import {teachers} from "./teachers";
 
 function App() {
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        if (process.env.NODE_ENV !== 'development') window.scrollTo(0, 0);
     }, [pathname]);
 
     return (
