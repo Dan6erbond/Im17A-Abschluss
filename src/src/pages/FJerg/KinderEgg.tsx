@@ -43,7 +43,7 @@ export default function KinderEgg(props: KinderEggProps) {
             <VizSensor partialVisibility onChange={isVisible => {
                 if (isVisible && !visible) {
                     setVisible(true);
-                    setOpen(true);
+                    // setOpen(true);
                 }
             }}>
                 <Stage height={550} width={400}>
@@ -51,7 +51,8 @@ export default function KinderEgg(props: KinderEggProps) {
                         <Spring native
                                 to={{
                                     x: open ? 230 : 75,
-                                    y: open ? 40 : 325
+                                    y: open ? 40 : 325,
+                                    opacity: open ? 1 : 0
                                 }}>
                             {props => (
                                 <animated.Image {...props}
@@ -73,14 +74,16 @@ export default function KinderEgg(props: KinderEggProps) {
                                                 image={eggTop}
                                                 height={eggTopHeight}
                                                 width={eggTopWidth}
-                                                ref={eggTopRef}/>
+                                                ref={eggTopRef}
+                                                onClick={() => setOpen(true)}/>
                             )}
                         </Spring>
                         <Image x={47}
                                y={193}
                                image={eggBottom}
                                height={eggBottomHeight}
-                               width={eggBottomWidth}/>
+                               width={eggBottomWidth}
+                               onClick={() => setOpen(true)}/>
                     </Layer>
                 </Stage>
             </VizSensor>
