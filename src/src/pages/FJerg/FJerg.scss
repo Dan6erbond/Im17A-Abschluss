@@ -1,3 +1,18 @@
 .f-jerg {
+  .kinder-egg {
+    position: relative;
+    min-height: 100vh;
 
+    & > div {
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 100%;
+
+      & > div {
+        margin: 0 auto;
+      }
+    }
+  }
 }
