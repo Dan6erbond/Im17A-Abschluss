@@ -10,7 +10,7 @@ interface ScrollButtonProps {
     scrollRef: React.RefObject<any>;
     icon?: IconProp;
     children?: React.ReactNode;
-    text: React.ReactNode;
+    text?: React.ReactNode;
 }
 
 export default function ScrollButton(props: ScrollButtonProps) {
