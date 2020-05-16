@@ -5,19 +5,43 @@ import useImage from "use-image";
 import {Spring, animated} from 'react-spring/renderprops-konva';
 import VizSensor from "react-visibility-sensor";
 
+const students = [
+    {
+        name: "Ravi",
+        img: "./res/img/students/ravi.png"
+    },
+    {
+        name: "Alain",
+        img: "./res/img/students/alain.png"
+    },
+    {
+        name: "Albion",
+        img: "./res/img/students/albion.jpeg"
+    },
+    {
+        name: "Aron",
+        img: "./res/img/students/aron.jpg"
+    },
+    {
+        name: "Felix",
+        img: "./res/img/students/felix.jpg"
+    },
+    {
+        name: "Simon",
+        img: "./res/img/students/simon_2.png"
+    },
+    {
+        name: "Tim",
+        img: "./res/img/students/tim.jpeg"
+    }
+];
+
 interface KinderEggProps {
     kinderEggRef: React.RefObject<HTMLDivElement>;
 }
 
 export default function KinderEgg(props: KinderEggProps) {
     const {kinderEggRef} = props;
-
-    const students = [
-        {
-            name: "Ravi",
-            img: process.env.PUBLIC_URL + "/res/img/students/ravi.png"
-        }
-    ];
 
     const [visible, setVisible] = React.useState<boolean>(false);
 
@@ -31,19 +55,34 @@ export default function KinderEgg(props: KinderEggProps) {
 
     const eggTopRef = React.useRef<Konva.Image>(null);
 
-    const [student] = React.useState<typeof students[0]>(students[Math.floor(Math.random() * students.length)]);
+    const [student, setStudent] = React.useState<typeof students[0]>(students[Math.floor(Math.random() * students.length)]);
     const [studentImg] = useImage(student.img);
     const studentImgWidth = 100;
     const studentImgHeight = studentImg ? studentImg.height / studentImg.width * studentImgWidth : studentImgWidth;
 
     const [open, setOpen] = React.useState<boolean>(false);
+    const [closing, setClosing] = React.useState<boolean>(false);
+
+    const openEgg = () => {
+        if (closing) return;
+
+        setOpen(true);
+
+        setTimeout(() => {
+            setOpen(false);
+            setClosing(true);
+            setTimeout(() => {
+                setStudent(students[Math.floor(Math.random() * students.length)]);
+                setClosing(false);
+            }, 500);
+        }, 1000);
+    };
 
     return (
         <div className="kinder-egg" ref={kinderEggRef}>
             <VizSensor partialVisibility onChange={isVisible => {
                 if (isVisible && !visible) {
                     setVisible(true);
-                    // setOpen(true);
                 }
             }}>
                 <Stage height={550} width={400}>
@@ -75,8 +114,8 @@ export default function KinderEgg(props: KinderEggProps) {
                                                 height={eggTopHeight}
                                                 width={eggTopWidth}
                                                 ref={eggTopRef}
-                                                onClick={() => setOpen(true)}
-                                                onTouchStart={() => setOpen(true)}/>
+                                                onClick={openEgg}
+                                                onTouchStart={openEgg}/>
                             )}
                         </Spring>
                         <Image x={47}
@@ -84,8 +123,8 @@ export default function KinderEgg(props: KinderEggProps) {
                                image={eggBottom}
                                height={eggBottomHeight}
                                width={eggBottomWidth}
-                               onClick={() => setOpen(true)}
-                               onTouchStart={() => setOpen(true)}/>
+                               onClick={openEgg}
+                               onTouchStart={openEgg}/>
                     </Layer>
                 </Stage>
             </VizSensor>
