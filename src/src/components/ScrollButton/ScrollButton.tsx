@@ -19,8 +19,8 @@ export default function ScrollButton(props: ScrollButtonProps) {
     const {scrollRef, icon, text, children} = props;
 
     return (
-        <div style={{padding: '2px'}}>
-            <motion.button onClick={() => scrollToRef(scrollRef)} className="scroll-button" whileHover={{scale: 1.1}}
+        <div style={{padding: '2px'}} className="scroll-button">
+            <motion.button onClick={() => scrollToRef(scrollRef)} whileHover={{scale: 1.1}}
                            whileTap={{scale: 0.9}}>
                 {children || icon ? <FontAwesomeIcon icon={icon!!} style={{height: '55px', width: '55px'}}/> :
                     <FontAwesomeIcon icon={faArrowCircleDown} style={{height: '55px', width: '55px'}}/>}
