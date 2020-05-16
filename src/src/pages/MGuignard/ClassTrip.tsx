@@ -1,6 +1,6 @@
 import VizSensor from "react-visibility-sensor";
 import {motion} from "framer-motion";
-import {Button, Carousel} from "react-bootstrap";
+import {Button, Carousel, Col, Container, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBuilding} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
@@ -29,6 +29,44 @@ export default function ClassTrip() {
 
     const classTripTitleRef = React.createRef<HTMLDivElement>();
     const classTripRef = React.createRef<HTMLDivElement>();
+
+    const generateSlideshow = () => {
+        return (
+            <Carousel>
+                {images.shuffle().map((img, i) =>
+                    <Carousel.Item key={i}>
+                        <div>
+                            <img
+                                className="d-block w-100"
+                                src={`/res/img/mguignard/frankfurt/${img}`}
+                                alt={img}
+                            />
+                        </div>
+                        <Carousel.Caption>
+                            <h3>First slide label</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>)}
+            </Carousel>
+        );
+    };
+
+    const generatePictureGrid = () => {
+        return (
+            <Container fluid="md">
+                <Row>
+                    {images.shuffle().map((img, i) => <Col sm={12} md={i % 4 ? 3 : i % 8 ? 6 : 12}>
+                        <img
+                            className="d-block w-100"
+                            height="auto"
+                            src={`/res/img/mguignard/frankfurt/${img}`}
+                            alt={img}
+                        />
+                    </Col>)}
+                </Row>
+            </Container>
+        );
+    };
 
     return (
         <div className="class-trip">
@@ -65,22 +103,7 @@ export default function ClassTrip() {
             </div>
 
             <div ref={classTripRef}>
-                <Carousel>
-                    {images.map((img, i) =>
-                        <Carousel.Item key={i}>
-                            <div>
-                                <img
-                                    className="d-block w-100"
-                                    src={`/res/img/mguignard/frankfurt/${img}`}
-                                    alt={img}
-                                />
-                            </div>
-                            <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>)}
-                </Carousel>
+                {generateSlideshow()}
             </div>
         </div>
     );
