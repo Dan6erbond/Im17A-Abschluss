@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+@import "../../index";
 
 .home {
   padding: 15px;
@@ -25,6 +26,9 @@
   }
 
   .student-card, .teacher-card {
+    @extend .card;
+    height: 100%;
+
     & > div:first-of-type {
       height: 200px;
       width: 100%;

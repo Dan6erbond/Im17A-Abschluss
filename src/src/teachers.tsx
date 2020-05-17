@@ -2,7 +2,14 @@ import React from "react";
 import MGuignard from "./pages/MGuignard/MGuignard";
 import FJerg from "./pages/FJerg/FJerg";
 
-export const teachers = [
+export interface teacher {
+    name: string;
+    path: string;
+    component?: React.ReactNode;
+    img?: string;
+}
+
+export const teachers: teacher[] = [
     {
         name: "Matthias Graf",
         path: "bLUb5kH",
