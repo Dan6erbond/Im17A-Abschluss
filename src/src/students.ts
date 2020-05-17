@@ -32,7 +32,8 @@ export const students: student[] = [
         name: "Dominik",
         surname: "Berger",
         img: "./res/img/students/dominik.png",
-        href: "https://doemuu.live/"
+        href: "https://doemuu.live/",
+        plans: "Das Praktium, bei der Enhanzz AG in Alpnach (OW), beginne ich anfangs Schuljahr 20/21. Nach dem Praktikum will ich Teilzeit im Betrieb bleiben und an der Fachhochschule Wirtschaft studieren."
     },
     {
         name: "Felix",
@@ -44,7 +45,7 @@ export const students: student[] = [
         name: "RaviAnand",
         surname: "Mohabir",
         img: "./res/img/students/ravi.png",
-        plans: "Nach dem Praktikum bei der BlueMouse GmbH zur Fachhochschule gehen und den Bachelor of Mechanical Engineering machen.",
+        plans: "Nach dem Praktikum bei der BlueMouse GmbH in Baden, möchte ich zur Fachhochschule gehen und den Bachelor of Mechanical Engineering machen.",
         href: "https://ravianand.me"
     },
     {
