@@ -50,6 +50,6 @@ export const students: student[] = [
         name: "Tim",
         surname: "Mosbacher",
         img: "./res/img/students/tim.png",
-        plans: "Nach dem Praktikum möchte ich meine Militärpflicht leisten, um nachher irgenwo, wahrscheinlich als Informatiker, zu arbeiten um eine eogene Wohnung zu leisten."
+        plans: "Nach dem Praktikum möchte ich meine Militärpflicht leisten, um nachher irgendwo, wahrscheinlich als Informatiker, zu arbeiten um eine eigene Wohnung zu leisten."
     }
 ];
