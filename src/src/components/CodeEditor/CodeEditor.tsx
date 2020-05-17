@@ -11,12 +11,12 @@ interface CodeEditorProps {
     language: string;
     content?: string;
     editable?: boolean;
-    run?: () => void;
+    run?: (running: boolean) => void;
     style?: CSSProperties;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-    const {language, editable, style} = props;
+    const {language, editable, style, run} = props;
 
     const [content, setContent] = React.useState(props.content || "");
     const [running, setRunning] = React.useState(false);
@@ -39,6 +39,16 @@ export default function CodeEditor(props: CodeEditorProps) {
         }
     };
 
+    const toggleRun = () => {
+        if (running) {
+            setRunning(false);
+            if (run) run(false);
+        } else {
+            setRunning(true);
+            if (run) run(true);
+        }
+    };
+
     return (
         <div className="code-editor" style={style}>
             <div className="toolbar">
@@ -48,10 +58,10 @@ export default function CodeEditor(props: CodeEditorProps) {
                 <div className="buttons">
                     {running ? <div>
                         <FontAwesomeIcon icon={faUndo}/>
-                    </div> : <div onClick={() => setRunning(true)}>
+                    </div> : <div onClick={toggleRun}>
                         <FontAwesomeIcon icon={faPlay}/>
                     </div>}
-                    <div onClick={() => setRunning(false)} className={running ? "enabled" : "disabled"}>
+                    <div onClick={toggleRun} className={running ? "enabled" : "disabled"}>
                         <FontAwesomeIcon icon={faSquare}/>
                     </div>
                 </div>
