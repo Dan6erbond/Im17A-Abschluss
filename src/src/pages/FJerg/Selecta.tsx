@@ -5,34 +5,9 @@ import {Spring, animated} from 'react-spring/renderprops-konva';
 import KinderEgg from "./KinderEgg";
 
 const students = [
-    {
-        name: "Ravi",
-        img: "./res/img/students/ravi.png"
-    },
-    {
-        name: "Alain",
-        img: "./res/img/students/alain.png"
-    },
-    {
-        name: "Albion",
-        img: "./res/img/students/albion.jpeg"
-    },
-    {
-        name: "Aron",
-        img: "./res/img/students/aron.jpg"
-    },
-    {
-        name: "Felix",
-        img: "./res/img/students/felix.jpg"
-    },
-    {
-        name: "Simon",
-        img: "./res/img/students/simon_2.png"
-    },
-    {
-        name: "Tim",
-        img: "./res/img/students/tim.jpeg"
-    }
+    "./res/img/students/ravi.png", "./res/img/students/alain.png", "./res/img/students/albion.png",
+    "./res/img/students/aron.png", "./res/img/students/felix.png", "./res/img/students/simon.png",
+    "./res/img/students/tim.png", "./res/img/students/alex.png"
 ];
 
 interface SelectaItemProps {
@@ -156,7 +131,7 @@ export default function Selecta(props: SelectaProps) {
                                              displayComponent={setEggComponent}
                                              key={j + i * 3}>
                                     <KinderEgg setComponent={setEggComponent}
-                                               student={shuffledStudents[Math.min(j + i * 3, shuffledStudents.length - 1)]}/>
+                                               surprise={shuffledStudents[Math.min(j + i * 3, shuffledStudents.length - 1)]}/>
                                 </SelectaItem>)}
                         </React.Fragment>)}
                     </Layer>
