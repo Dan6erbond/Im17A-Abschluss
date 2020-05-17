@@ -45,7 +45,7 @@ export const students: student[] = [
         name: "RaviAnand",
         surname: "Mohabir",
         img: "./res/img/students/ravi.png",
-        plans: "Nach dem Praktikum bei der BlueMouse GmbH in Baden, möchte ich zur Fachhochschule gehen und den Bachelor of Mechanical Engineering machen.",
+        plans: "Nach dem Praktikum bei der BlueMouse GmbH in Baden (AG), möchte ich zur Fachhochschule gehen und den Bachelor of Mechanical Engineering machen.",
         href: "https://ravianand.me"
     },
     {
