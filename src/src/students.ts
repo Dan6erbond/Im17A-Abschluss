@@ -38,18 +38,25 @@ export const students: student[] = [
         name: "RaviAnand",
         surname: "Mohabir",
         img: "./res/img/students/ravi.png",
-        plans: "Nach dem Praktikum an die Fachhochschule gehen und den Bachelor of Mechanical Engineering machen.",
+        plans: "Nach dem Praktikum bei der BlueMouse GmbH zur Fachhochschule gehen und den Bachelor of Mechanical Engineering machen.",
         href: "https://ravianand.me"
     },
     {
         name: "Simon",
         surname: "Kunze",
-        img: "./res/img/students/simon.png"
+        img: "./res/img/students/simon.png",
+        plans: "Sterben."
     },
     {
         name: "Tim",
         surname: "Mosbacher",
         img: "./res/img/students/tim.png",
         plans: "Nach dem Praktikum möchte ich meine Militärpflicht leisten, um nachher irgendwo, wahrscheinlich als Informatiker, zu arbeiten um eine eigene Wohnung zu leisten."
+    },
+    {
+        name: "Dominik",
+        surname: "Berger",
+        img: "./res/img/students/dominik.png",
+        href: "https://doemuu.live/"
     }
 ];
