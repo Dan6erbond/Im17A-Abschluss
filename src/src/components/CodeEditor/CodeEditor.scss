@@ -57,7 +57,7 @@
   }
 
   .editor {
-    flex-grow: 500;
+    flex: 500;
     position: relative;
     border: 1px solid rgb(34, 34, 34);
     background: rgb(34, 34, 34);
@@ -124,5 +124,12 @@
       background: transparent !important;
       margin: 0 !important;
     }
+  }
+
+  .run {
+    border: 10px solid #263238;
+    padding: 10px;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    color: white;
   }
 }

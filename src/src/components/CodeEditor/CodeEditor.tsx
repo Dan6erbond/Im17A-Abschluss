@@ -9,21 +9,36 @@ import "./CodeEditor.scss";
 
 interface CodeEditorProps {
     language: string;
-    content?: string;
+    content: string;
     editable?: boolean;
-    run?: (running: boolean) => void;
+    running: boolean;
     style?: CSSProperties;
+    onEdit?: (code: string) => void;
+    runText?: string;
+    onClickStart?: () => void;
+    onClickReload?: () => void;
+    onClickStop?: () => void;
+    onRequestRun?: () => void;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-    const {language, editable, style, run} = props;
+    const {language, editable, style, running, onEdit, runText, content, onClickStart, onClickReload, onClickStop, onRequestRun} = props;
 
-    const [content, setContent] = React.useState(props.content || "");
-    const [running, setRunning] = React.useState(false);
+    const [controlDown, setControlDown] = React.useState(false);
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         let value = content,
             selStartPos = event.currentTarget.selectionStart!!;
+
+        if (event.key === "Control") {
+            setControlDown(true);
+        }
+
+        if (controlDown && event.key === "r") {
+            setControlDown(false);
+            if (onRequestRun) onRequestRun();
+            event.preventDefault();
+        }
 
         if (event.key === "Tab") {
             value =
@@ -33,20 +48,14 @@ export default function CodeEditor(props: CodeEditorProps) {
             event.currentTarget.selectionStart = selStartPos + 3;
             event.currentTarget.selectionEnd = selStartPos + 4;
 
-            event.preventDefault();
+            if (onEdit) onEdit(value);
 
-            setContent(value);
+            event.preventDefault();
         }
     };
 
-    const toggleRun = () => {
-        if (running) {
-            setRunning(false);
-            if (run) run(false);
-        } else {
-            setRunning(true);
-            if (run) run(true);
-        }
+    const onTextChange = (txt: string) => {
+        if (onEdit) onEdit(txt);
     };
 
     return (
@@ -56,15 +65,12 @@ export default function CodeEditor(props: CodeEditorProps) {
                     <span>JergOptionPane.java</span>
                 </div>
                 <div className="buttons">
-                    {running ? <div onClick={() => {
-                        toggleRun();
-                        setTimeout(toggleRun, 200);
-                    }}>
+                    {running ? <div onClick={onClickReload}>
                         <FontAwesomeIcon icon={faUndo}/>
-                    </div> : <div onClick={toggleRun}>
+                    </div> : <div onClick={onClickStart}>
                         <FontAwesomeIcon icon={faPlay}/>
                     </div>}
-                    <div onClick={toggleRun} className={running ? "enabled" : "disabled"}>
+                    <div onClick={onClickStop} className={running ? "enabled" : "disabled"}>
                         <FontAwesomeIcon icon={faSquare}/>
                     </div>
                 </div>
@@ -74,13 +80,16 @@ export default function CodeEditor(props: CodeEditorProps) {
                     disabled={!editable}
                     className="input"
                     value={content}
-                    onChange={evt => setContent(evt.target.value)}
+                    onChange={evt => onTextChange(evt.target.value)}
                     onKeyDown={handleKeyDown}
                 />
                 <SyntaxHighlighter className="output" language={language} style={cb}>
                     {content}
                 </SyntaxHighlighter>
             </div>
+            {runText ? <div className="run">
+                {runText}
+            </div> : null}
         </div>
     );
 }
