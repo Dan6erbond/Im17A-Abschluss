@@ -89,7 +89,7 @@ export default function Selecta(props: SelectaProps) {
         <div className="selecta-machine" ref={selectaRef}>
             <div>
                 <h2>Selecta</h2>
-                <h3>Wählen Sie ein Überraschungsei aus!</h3>
+                <h3>Nehmen Sie ein Überraschungsei oder zwei für die Reise!</h3>
                 <br/>
                 <Stage height={800} width={500}>
                     <Layer>
