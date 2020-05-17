@@ -1,11 +1,11 @@
 import * as React from "react";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {cb} from "react-syntax-highlighter/dist/esm/styles/prism";
-
-import "./CodeEditor.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay, faSquare, faUndo} from "@fortawesome/free-solid-svg-icons";
 import {CSSProperties} from "react";
+
+import "./CodeEditor.scss";
 
 interface CodeEditorProps {
     language: string;
