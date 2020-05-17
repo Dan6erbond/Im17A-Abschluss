@@ -6,11 +6,11 @@ import {Spring, animated} from 'react-spring/renderprops-konva';
 
 interface KinderEggProps {
     setComponent: (component: React.ReactNode | null) => void;
-    student: { name: string, img: string };
+    surprise: string;
 }
 
 export default function KinderEgg(props: KinderEggProps) {
-    const {setComponent, student} = props;
+    const {setComponent, surprise} = props;
 
     const [eggTop] = useImage(process.env.PUBLIC_URL + "/res/img/fjerg/kinder-ueberraschungsei_top.png");
     const eggTopWidth = 300;
@@ -22,9 +22,9 @@ export default function KinderEgg(props: KinderEggProps) {
 
     const eggTopRef = React.useRef<Konva.Image>(null);
 
-    const [studentImg] = useImage(student.img);
-    const studentImgWidth = 100;
-    const studentImgHeight = studentImg ? studentImg.height / studentImg.width * studentImgWidth : studentImgWidth;
+    const [surpriseImg] = useImage(surprise);
+    const surpriseImgWidth = 100;
+    const surpriseImgHeight = surpriseImg ? surpriseImg.height / surpriseImg.width * surpriseImgWidth : surpriseImgWidth;
 
     const [open, setOpen] = React.useState<boolean>(false);
 
@@ -46,9 +46,9 @@ export default function KinderEgg(props: KinderEggProps) {
                         }}>
                     {props => (
                         <animated.Image {...props}
-                                        height={studentImgHeight}
-                                        width={studentImgWidth}
-                                        image={studentImg}/>
+                                        height={surpriseImgHeight}
+                                        width={surpriseImgWidth}
+                                        image={surpriseImg}/>
                     )}
                 </Spring>
             </Layer>
