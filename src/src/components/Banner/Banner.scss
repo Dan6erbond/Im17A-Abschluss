@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 .banner {
   height: 100vh;
   position: relative;
@@ -13,6 +15,10 @@
 
     h2 {
       font-size: 4em;
+
+      @media (max-width: 768px) {
+        font-size: 2.5em;
+      }
     }
   }
 }
