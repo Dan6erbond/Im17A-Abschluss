@@ -4,6 +4,7 @@ import {Carousel, Col, Container, Row} from "react-bootstrap";
 import {faBuilding} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import ScrollButton from "../../components/ScrollButton/ScrollButton";
+import FrankfurtSlideshow from "../../components/Slideshow/Frankfurt/FrankfurtSlideshow";
 
 const images = [
     "20180924_131103.jpg",
@@ -27,27 +28,6 @@ export default function ClassTrip() {
 
     const classTripTitleRef = React.createRef<HTMLDivElement>();
     const classTripRef = React.createRef<HTMLDivElement>();
-
-    const generateSlideshow = () => {
-        return (
-            <Carousel>
-                {images.shuffle().map((img, i) =>
-                    <Carousel.Item key={i}>
-                        <div>
-                            <img
-                                className="d-block w-100"
-                                src={`./res/img/mguignard/frankfurt/${img}`}
-                                alt={img}
-                            />
-                        </div>
-                        <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>)}
-            </Carousel>
-        );
-    };
 
     const generatePictureGrid = () => {
         return (
@@ -98,7 +78,7 @@ export default function ClassTrip() {
             </div>
 
             <div ref={classTripRef}>
-                {generateSlideshow()}
+                <FrankfurtSlideshow english/>
             </div>
         </div>
     );
