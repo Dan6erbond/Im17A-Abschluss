@@ -34,7 +34,7 @@ export const teachers: teacher[] = [
     {
         name: "Daniel Schneeberger",
         path: "EkmjaQB",
-        img: "https://thumbs.dreamstime.com/b/person-gray-photo-placeholder-man-costume-white-background-person-gray-photo-placeholder-man-136701248.jpg"
+        img: "./res/img/teachers/schneeberger_daniel.jpg"
     },
     {
         name: "Geneviève Gross",
