@@ -32,7 +32,7 @@ export const teachers: teacher[] = [
         path: "EkmjaQB",
     },
     {
-        name: "Genevieve Gross",
+        name: "Geneviève Gross",
         path: "dshb4LF",
     },
     {
