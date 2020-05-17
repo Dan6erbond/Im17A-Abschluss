@@ -23,8 +23,6 @@ const images = [
 ];
 
 export default function ClassTrip() {
-    const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
-
     const [classTripTitleVisible, setClassTripTitleVisible] = React.useState<boolean>(false);
 
     const classTripTitleRef = React.createRef<HTMLDivElement>();
