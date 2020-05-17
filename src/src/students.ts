@@ -29,6 +29,12 @@ export const students: student[] = [
         plans: "Praktikum abschliessen und nach Möglichkeit noch ein weiteres Jahr arbeiten, dann evtl. FHS."
     },
     {
+        name: "Dominik",
+        surname: "Berger",
+        img: "./res/img/students/dominik.png",
+        href: "https://doemuu.live/"
+    },
+    {
         name: "Felix",
         surname: "Fasler",
         img: "./res/img/students/felix.png",
@@ -52,11 +58,5 @@ export const students: student[] = [
         surname: "Mosbacher",
         img: "./res/img/students/tim.png",
         plans: "Nach dem Praktikum möchte ich meine Militärpflicht leisten, um nachher irgendwo, wahrscheinlich als Informatiker, zu arbeiten um eine eigene Wohnung zu leisten."
-    },
-    {
-        name: "Dominik",
-        surname: "Berger",
-        img: "./res/img/students/dominik.png",
-        href: "https://doemuu.live/"
     }
 ];
