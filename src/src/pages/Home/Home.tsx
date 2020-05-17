@@ -19,12 +19,15 @@ export default function Home() {
             <Banner text="Die Im17A ist mit der Schule fertig!">
                 <motion.h3 variants={{
                     hidden: {
-                        translateX: '50%'
+                        x: 50,
+                        transition: {
+                            x: {stiffness: 1000, velocity: -100}
+                        }
                     },
                     visible: {
-                        translateX: 0
+                        x: 0
                     }
-                }} transition={{duration: 1}}>
+                }}>
                     Nun ist es doch genug damit.
                 </motion.h3>
             </Banner>
@@ -53,12 +56,15 @@ export default function Home() {
             <Banner text="Für die Lehrer haben wir etwas Spezielles vorbereitet">
                 <motion.h3 variants={{
                     hidden: {
-                        translateX: '50%'
+                        x: 50,
+                        transition: {
+                            x: {stiffness: 1000, velocity: -100}
+                        }
                     },
                     visible: {
-                        translateX: 0
+                        x: 0
                     }
-                }} transition={{duration: 1}}>
+                }}>
                     Als Dankeschön für die anstrengenden Jahre und den interessanten Unterricht...
                 </motion.h3>
             </Banner>
