@@ -2,67 +2,67 @@ import React from "react";
 import MGuignard from "./pages/MGuignard/MGuignard";
 import FJerg from "./pages/FJerg/FJerg";
 
-export const teachers = [
+export interface teacher {
+    name: string;
+    path: string;
+    component?: React.ReactNode;
+    img?: string;
+}
+
+export const teachers: teacher[] = [
     {
         name: "Matthias Graf",
         path: "bLUb5kH",
-        img: null
     },
     {
         name: "Marielle Guignard",
         path: "N6bmxqI",
         component: <MGuignard/>,
-        img: null
     },
     {
         name: "Lil Klink",
         path: "5rM6ams",
-        img: null
     },
     {
         name: "Loredana Arleo",
         path: "SWH6Yjq",
-        img: null
     },
     {
         name: "Daniel Schneeberger",
         path: "EkmjaQB",
-        img: null
     },
     {
         name: "Genevieve Gross",
         path: "dshb4LF",
-        img: null
     },
     {
         name: "Andreas Neeser",
         path: "hJAQqe4",
-        img: null
     },
     {
         name: "Sascha Fiechter",
         path: "eccFgkV",
-        img: null
+        img: "./res/img/teachers/fiechter_sascha.jpg"
     },
     {
         name: "Fabian Jerg",
         path: "DSraT8n",
         component: <FJerg/>,
-        img: null
+        img: "./res/img/teachers/jerg_fabian.jpg"
     },
     {
         name: "Alexander Flick",
         path: "arJqAVL",
-        img: null
+        img: "./res/img/teachers/flick_alexander.jpg"
     },
     {
         name: "Lars Meyer",
         path: "cii6Kwf",
-        img: null
+        img: "./res/img/teachers/meyer_lars.jpg"
     },
     {
         name: "Réne Weidmann",
         path: "iy4e0Rr",
-        img: null
+        img: "./res/img/teachers/weidmann_rene.jpg"
     }
 ];
