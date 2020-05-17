@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
+.home {
+  padding: 15px;
+  font-family: 'Barlow', sans-serif;
+
+  h2, h3 {
+    text-align: center;
+    font-family: 'Squada One', cursive;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  .row {
+    .col-md-4, .col-sm-6 {
+      padding: 15px;
+    }
+  }
+
+  .student-card, .teacher-card {
+    & > div:first-of-type {
+      height: 200px;
+      width: 100%;
+      padding: 15px;
+
+      .student-image, .teacher-image {
+        height: 100%;
+        width: 170px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+      }
+    }
+  }
+}
