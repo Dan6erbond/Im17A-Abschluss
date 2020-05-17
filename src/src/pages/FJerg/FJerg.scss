@@ -22,10 +22,6 @@
       top: 50%;
       min-height: 660px;
 
-      h2 {
-        padding-top: 20px;
-      }
-
       & > div {
         @media (max-width: 768px) {
           position: absolute;
