@@ -5,21 +5,18 @@ import {cb} from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./CodeEditor.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay, faSquare, faUndo} from "@fortawesome/free-solid-svg-icons";
+import {CSSProperties} from "react";
 
 interface CodeEditorProps {
     language: string;
     content?: string;
-    height?: string | number;
-    width?: string | number;
     editable?: boolean;
     run?: () => void;
+    style?: CSSProperties;
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-    const {language, editable} = props;
-
-    const height = props.height || '90vh';
-    const width = props.width || '90vw';
+    const {language, editable, style} = props;
 
     const [content, setContent] = React.useState(props.content || "");
     const [running, setRunning] = React.useState(false);
@@ -43,11 +40,7 @@ export default function CodeEditor(props: CodeEditorProps) {
     };
 
     return (
-        <div className="code-editor"
-             style={{
-                 height: typeof height === "number" ? `${height}px` : height,
-                 width: typeof width === "number" ? `${width}px` : width
-             }}>
+        <div className="code-editor" style={style}>
             <div className="toolbar">
                 <div className="title">
                     <span>JergOptionPane.java</span>
