@@ -16,7 +16,7 @@ export default function Slideshow(props: SlideshowProps) {
                     <div>
                         <img
                             className="d-block w-100"
-                            src={`./res/img/mguignard/frankfurt/${img.path}`}
+                            src={img.path}
                             alt={img.sub}
                         />
                     </div>
