@@ -56,7 +56,10 @@ export default function CodeEditor(props: CodeEditorProps) {
                     <span>JergOptionPane.java</span>
                 </div>
                 <div className="buttons">
-                    {running ? <div>
+                    {running ? <div onClick={() => {
+                        toggleRun();
+                        setTimeout(toggleRun, 200);
+                    }}>
                         <FontAwesomeIcon icon={faUndo}/>
                     </div> : <div onClick={toggleRun}>
                         <FontAwesomeIcon icon={faPlay}/>
