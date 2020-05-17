@@ -47,8 +47,6 @@ const getDuration = function (d1: any, d2: any) {
 }
 
 export default function MGuignard() {
-    const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
-
     const [lateEvent] = React.useState<typeof lateEvents[0]>(lateEvents[Math.floor(Math.random() * lateEvents.length)]);
 
     const limericksTitleRef = React.createRef<HTMLDivElement>();
