@@ -16,6 +16,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-syntax-highlighter": "^11.0.4",
     "@types/react-visibility-sensor": "^5.0.1",
     "bootstrap": "^4.5.0",
     "framer-motion": "^1.11.0",
@@ -28,6 +29,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
+    "react-syntax-highlighter": "^12.2.1",
     "react-visibility-sensor": "^5.1.1",
     "typescript": "~3.7.2",
     "use-image": "^1.0.5"
