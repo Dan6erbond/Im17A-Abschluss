@@ -1,17 +1,11 @@
 import * as React from "react";
 import {Tab, Row, Col, Nav} from "react-bootstrap";
+import DistanceLearning from "../DistanceLearning/DistanceLearning";
+
 import Burger from "./svg/burgermenu.svg";
 import Magnifying from "./svg/magnifying.svg";
 
 function SideNavTab() {
-  const [red, setRed] = React.useState(0);
-  const [green, setGreen] = React.useState(0);
-  const [blue, setBlue] = React.useState(0);
-  React.useEffect(() => {
-    setRed(GenerateRandomColour());
-    setGreen(GenerateRandomColour());
-    setBlue(GenerateRandomColour());
-  }, [])
 
   return (
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -24,17 +18,17 @@ function SideNavTab() {
           </div>
           <Nav variant="tabs" className="flex-column">
             <Nav.Item>
-              <Nav.Link className="tab-link green" eventKey="first">Tab 1</Nav.Link>
+              <Nav.Link className="tab-link green" eventKey="first">Distance Learning</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link className="tab-link red" eventKey="second">Tab 2</Nav.Link>
+              <Nav.Link className="tab-link red" eventKey="second">Anwesenheitskontrolle</Nav.Link>
             </Nav.Item>
           </Nav>
         </Col>
         <Col sm={9}>
           <Tab.Content>
             <Tab.Pane eventKey="first">
-              <p>Content of Tab 1</p>
+              <DistanceLearning/>
             </Tab.Pane>
             <Tab.Pane eventKey="second">
               <p>Content of Tab 2</p>
@@ -44,11 +38,6 @@ function SideNavTab() {
       </Row>
     </Tab.Container>
   );
-}
-
-function GenerateRandomColour(){
-  let colour = Math.floor(Math.random() * 255);
-  return colour;
 }
 
 export default SideNavTab;
