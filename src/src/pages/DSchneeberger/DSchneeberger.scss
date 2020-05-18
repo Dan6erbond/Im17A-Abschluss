@@ -71,10 +71,38 @@
             .col-sm-9{
               padding: 0 !important;
               margin:0 !important;
+              .content{
+                width:70%;
+                margin-left: 100px;
+                margin-top: 10px;
+                .content-title{
+                  line-height: 8px;
+                  h2{
+                    color: red;
+                    border-bottom: solid 1px rgba(217, 217, 217, 1);
+                  }
+                  span{
+                    font-size:12px;
+                  }
+                }
+                .content-body{
+                  line-height: normal;
+                  margin-top: 20px;
+                  text-align: justify;
+                }
+              }
             }
           }
       }
     }
+}
 
-
+@media screen and (max-width: 600px){
+  .d-schneeberger{
+    .content{
+      margin: 0 auto !important;
+      margin-top:5px !important;
+      word-break: break-all;
+    }
+  }
 }
