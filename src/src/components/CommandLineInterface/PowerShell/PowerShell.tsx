@@ -6,7 +6,7 @@ import "./PowerShell.scss";
 export default function PowerShell(props: CommandLineInterfaceProps){
     return (
         <div className="powershell">
-            <CommandLineInterface {...props}/>
+            <CommandLineInterface {...props} inputColor="yellow"/>
         </div>
     )
 }

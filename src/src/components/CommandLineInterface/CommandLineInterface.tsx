@@ -2,11 +2,10 @@ import * as React from "react";
 
 import "./CommandLineInterface.scss";
 
-interface Commandlet {
-    name: string;
-    output?: CLILine[];
+export interface Commandlet {
+    command: RegExp;
+    onRun?: CLILine[] | ((result: any) => CLILine[]);
     pushLine?: boolean;
-    callback?: (commandlet: Commandlet) => void;
     commandlets?: Commandlet[];
 }
 
@@ -27,6 +26,7 @@ export interface CommandLineInterfaceProps {
     lines?: CLILine[];
     path: CLIString[];
     pathColor?: string;
+    inputColor?: string;
     commandlets: Commandlet[];
     defaultFontSize?: number;
 }
@@ -36,6 +36,7 @@ interface CommandLineInterfaceState {
     controlDown: boolean;
     shiftDown: boolean;
     commandlets: Commandlet[];
+    inputs: string[]
 }
 
 export default class CommandLineInterface extends React.Component<CommandLineInterfaceProps, CommandLineInterfaceState> {
@@ -51,7 +52,8 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
             lines: props.lines ? props.lines.concat([{strings: this.getPath()}]) : [{strings: this.getPath()}],
             controlDown: false,
             shiftDown: false,
-            commandlets: this.props.commandlets
+            commandlets: this.props.commandlets,
+            inputs: []
         };
 
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -110,24 +112,35 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
         const {commandlets, lines} = this.state;
 
         let commandletFound = false;
+
         let lastLine = lines[lines.length - 1].strings.map(s => s.value).join("");
         let input = lastLine.replace(this.getPathString(), "");
 
+        let newInputs = Object.assign([], this.state.inputs);
+        newInputs.push(input);
+        this.setState({inputs: newInputs});
+
         for (let i = 0; i < commandlets.length; i++) {
-            if (input === commandlets[i].name) {
+            let result = commandlets[i].command.exec(input);
+
+            if (result) {
                 let commandlet = commandlets[i];
 
                 commandletFound = true;
 
-                if (commandlet.output) {
-                    if (commandlet.pushLine === false) this.writeLine(...commandlet.output);
-                    else this.writeLine(this.emptyLine, ...commandlet.output, this.emptyLine);
+                if (commandlet.onRun) {
+                    if (typeof commandlet.onRun !== "function") {
+                        if (commandlet.pushLine === false) this.writeLine(...commandlet.onRun);
+                        else this.writeLine(this.emptyLine, ...commandlet.onRun, this.emptyLine);
+                    } else {
+                        let lines = commandlet.onRun(result);
+                        if (commandlet.pushLine === false) this.writeLine(...lines);
+                        else this.writeLine(this.emptyLine, ...lines, this.emptyLine);
+                    }
                     this.setState({commandlets: commandlet.commandlets || this.props.commandlets});
                 } else {
                     this.writeLine();
                 }
-
-                if (commandlet.callback) commandlet.callback(commandlet);
 
                 break;
             }
@@ -135,6 +148,7 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
 
         if (!commandletFound) {
             this.writeLine();
+            this.setState({commandlets: this.props.commandlets});
         }
     }
 
@@ -150,7 +164,7 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                 });
         } else {
             if (event.key.match(/^(.)?$/)) {
-                this.writeLine({strings: [{value: event.key}]});
+                this.writeLine({strings: [{value: event.key, color: this.props.inputColor || "inherit"}]});
             } else {
                 switch (event.key) {
                     case "Enter":
@@ -172,6 +186,16 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                         break;
                     case "Shift":
                         this.setState({shiftDown: true});
+                        break;
+                    case "ArrowUp":
+                        if (this.state.inputs.length > 0) {
+                            this.writeLine({
+                                strings: [{
+                                    value: this.state.inputs[this.state.inputs.length - 1],
+                                    color: this.props.inputColor || "inherit"
+                                }]
+                            });
+                        }
                         break;
                     default:
                         console.log(event.key);
@@ -198,9 +222,9 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                               color: l.color || "white",
                               fontSize: `${l.fontSize || this.props.defaultFontSize || 14}px`
                           }}>
-                        {l.strings.map((s, i) => <span key={i} style={{
-                            color: s.color || "inherit"
-                        }}>{s.value}</span>)}
+                        {l.strings.map((s, i) => <span key={i} style={s.color ? {
+                            color: s.color
+                        } : undefined}>{s.value}</span>)}
                         <br/>
                 </span>)}
             </div>
