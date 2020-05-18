@@ -1,73 +1,77 @@
 import * as React from "react";
-import {Carousel, Container} from "react-bootstrap";
+import {faGlassCheers} from "@fortawesome/free-solid-svg-icons";
+import {motion} from "framer-motion";
+import Banner from "../../components/Banner/Banner";
+import Limericks from "./Limericks";
+import ClassTrip from "./ClassTrip";
 
-const limericks = [
+import "./MGuignard.scss";
+import ScrollButton from "../../components/ScrollButton/ScrollButton";
+
+const lateEvents = [
     {
-        author: "Dominik Berger",
-        text: "The name is Ravi\nHe's probbaly related to Ghandi\nA little man indeed\nAlways down to a feat\nNow, have you met his boyfriend Randy?"
+        name: "Christmas 2019",
+        date: Date.parse("25 Dec 2019 00:00:00 GMT")
     },
     {
-        author: "Simon Kunze",
-        text: "There lived a young man in a village near Zürich\nWhose task it was to compose a limerick\n'Twas a while 'til he followed through\nAnd uncreative he was to boot\nNo wonder then that it came out a little shit"
-    },
-    {
-        author: "Alexander Greuter",
-        text: "There once was a doctor called crane\nHe spent most of his life in vain\nHe even showed up in a movie once or twice\nThe one starring that rat guy which might not come as a surprise\nDespite all that he couldn’t even think of a fitting name"
-    },
-    {
-        author: "Alain Siegrist",
-        text: "There once was a German man\nHe had a \"great\" plan\nHe promised to make the country strong\nFor some reason nobody thought he was wrong\nThen he committed genocide better than the ku klux klan"
-    },
-    {
-        author: "Felix Fasler",
-        text: "There once was a man who lay in the grass\nHe wasn't able to play a nice pass\nSome said he should be ignored\nAnd told us about Rashford\nBut most still thought he was pure class"
-    },
-    {
-        author: "Albion Spahija",
-        text: "There once was a man in seventh heaven,\nDriving peacefully in his Porsche 911,\nUntil one day,\nA foreign masked man came,\nAnd shot the driver with a AK-47."
-    },
-    {
-        author: "Tim Mosbacher",
-        text:"There was once a man riding a bear\nHe was the american nightmare\nPutin was the name\noff the person playing the war game\nBut nobody knows, that he sells selfmade knightwear."
-    },
-    {
-        author: "Aron Eggenberger",
-        text: "The lovely wife who awaits inevitable doom\nSwiftly she cleans the floor with a broom\nVery early, her husband comes home\nThankfully, he sees his wife alone\nWhat he won't see is the man in the storage room"
-    },
-    {
-        author: "RaviAnand Mohabir",
-        text:"There was a country of Azerbaijan,\nwhere Dominik had gone.\nHe was met by some Arabs,\nthat put him on some camels.\nNow he is the new Khan."
+        name: "stop the man from eating a bat",
+        date: Date.parse("17 Dec 2019 00:00:00 GMT")
     }
 ];
 
-function shuffleArray(array: any[]) {
-    let i = array.length - 1;
-    for (; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
+const getDuration = function (d1: any, d2: any) {
+    return {
+        toString: function () {
+            let diffTime = Math.abs(d2 - d1);
+
+            const diffYears = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30 * 365));
+            diffTime -= diffYears * 1000 * 60 * 60 * 24 * 30 * 365;
+
+            const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30));
+            diffTime -= diffMonths * 1000 * 60 * 60 * 24 * 30;
+
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            diffTime -= diffDays * 1000 * 60 * 60 * 24;
+
+            const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+            diffTime -= diffHours * 1000 * 60 * 60;
+
+            const diffMinutes = Math.floor(diffTime / (1000 * 60));
+            diffTime -= diffMinutes * 1000 * 60;
+
+            const diffSeconds = Math.floor(diffTime / (1000));
+
+            return `${diffYears} years, ${diffMonths} months, ${diffDays} days, ${diffHours} hours, ${diffMinutes} minutes and ${diffSeconds} seconds`;
+        }
+    };
 }
 
 export default function MGuignard() {
+    const [lateEvent] = React.useState<typeof lateEvents[0]>(lateEvents[Math.floor(Math.random() * lateEvents.length)]);
+
+    const limericksTitleRef = React.createRef<HTMLDivElement>();
+
     return (
-        <React.Fragment>
-            <Carousel style={{background: '#000'}}>
-                {shuffleArray(limericks).map((l, i) => <Carousel.Item>
-                    <div style={{padding: '50px', textAlign: 'center', fontSize: '16px', color: 'white'}}>
-                        <p style={{fontFamily: 'Yellowtail', fontSize: '4vw'}}>
-                            {l.text.split("\n").map((t: string, j: number) => <span>{t}<br/></span>)}
-                        </p>
+        <div className="m-guignard">
+            <Banner text="Thank you for the wonderful three years, Ms Guignard!">
+                <motion.p variants={{
+                    hidden: {
+                        translateX: '100%'
+                    },
+                    visible: {
+                        translateX: 0
+                    }
+                }} transition={{duration: 0.5}} className="late-text">
+                    PS: You are {getDuration(lateEvent.date, Date.now()).toString()} too late
+                    to {lateEvent.name}.
+                </motion.p>
+                <ScrollButton scrollRef={limericksTitleRef}
+                              icon={faGlassCheers} text="Scroll Down"/>
+            </Banner>
 
-                        <p> - {l.author}</p>
-                    </div>
-                </Carousel.Item>)}
-            </Carousel>
+            <Limericks limericksTitleRef={limericksTitleRef}/>
 
-            <Container fluid="md">
-            </Container>
-        </React.Fragment>
+            <ClassTrip/>
+        </div>
     );
 }
