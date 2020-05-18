@@ -1,6 +1,7 @@
 import React from "react";
 import MGuignard from "./pages/MGuignard/MGuignard";
 import FJerg from "./pages/FJerg/FJerg";
+import DSchneeberger from "./pages/DSchneeberger/DSchneeberger";
 
 export interface teacher {
     name: string;
@@ -34,7 +35,8 @@ export const teachers: teacher[] = [
     {
         name: "Daniel Schneeberger",
         path: "EkmjaQB",
-        img: "./res/img/teachers/schneeberger_daniel.jpg"
+        img: "./res/img/teachers/schneeberger_daniel.jpg",
+        component: <DSchneeberger/>
     },
     {
         name: "Geneviève Gross",
