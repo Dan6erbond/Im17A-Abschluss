@@ -3,6 +3,7 @@ import MGuignard from "./pages/MGuignard/MGuignard";
 import FJerg from "./pages/FJerg/FJerg";
 import DSchneeberger from "./pages/DSchneeberger/DSchneeberger";
 import LMeyer from "./pages/LMeyer/LMeyer";
+import AFlick from "./pages/AFlick/AFlick";
 
 export interface teacher {
     name: string;
@@ -63,7 +64,8 @@ export const teachers: teacher[] = [
     {
         name: "Alexander Flick",
         path: "arJqAVL",
-        img: "./res/img/teachers/flick_alexander.jpg"
+        img: "./res/img/teachers/flick_alexander.jpg",
+        component: <AFlick/>
     },
     {
         name: "Lars Meyer",
