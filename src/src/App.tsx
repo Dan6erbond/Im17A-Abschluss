@@ -12,6 +12,9 @@ function App() {
 
     return (
         <Switch>
+            <Route path="/" exact>
+                <Home/>
+            </Route>
             {teachers.map((t, i) => <Route key={i} path={`/${t.path}`}>
                 {t.component || <div>{t.name}</div>}
             </Route>)}
