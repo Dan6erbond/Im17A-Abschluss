@@ -9,13 +9,13 @@ export interface Commandlet {
     commandlets?: Commandlet[];
 }
 
-interface CLIString {
+export interface CLIString {
     value: string;
     readonly?: boolean;
     color?: string;
 }
 
-interface CLILine {
+export interface CLILine {
     strings: CLIString[];
     color?: string;
     fontSize?: number;
