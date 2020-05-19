@@ -87,7 +87,11 @@ export default function Selecta(props: SelectaProps) {
 
     const [eggComponent, setEggComponent] = React.useState<React.ReactNode | null>(null);
 
-    const shuffledStudents = students.shuffle();
+    const [shuffledStudents] = React.useState(students.shuffle());
+
+    let surprises = ["./res/img/fjerg/capri_sun.png", "./res/img/fjerg/kinder_riegel.png", "./res/img/fjerg/projector.png", "./res/img/fjerg/joptionpane.png"];
+    surprises = surprises.concat(shuffledStudents.map(s => s.img).slice(0, 8-surprises.length));
+    console.log(surprises);
 
     return (
         <div className="selecta-machine" ref={selectaRef}>
@@ -122,7 +126,7 @@ export default function Selecta(props: SelectaProps) {
                                              displayComponent={setEggComponent}
                                              key={j + i * 3}>
                                     <KinderEgg setComponent={setEggComponent}
-                                               surprise={shuffledStudents[Math.min(j * 3 + i, shuffledStudents.length - 1)].img}/>
+                                               surprise={surprises[Math.min(j * 3 + i, shuffledStudents.length - 1)]}/>
                                 </SelectaItem>)}
                         </React.Fragment>)}
                     </Layer>
