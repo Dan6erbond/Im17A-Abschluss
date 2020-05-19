@@ -9,25 +9,28 @@
     text-align: center;
   }
 
-  .jumbotron {
-    height: 45vh;
-  }
+  .a-flick-home {
+    .jumbotron {
+      height: 45vh;
+      min-height: 700px;
+    }
 
-  .carousel {
-    .carousel-item-inner {
-      background: grey;
-      height: 90vh;
-      width: 100vw;
-      color: white;
-      position: relative;
-      text-align: center;
+    .carousel {
+      .carousel-item-inner {
+        background: grey;
+        height: 90vh;
+        width: 100vw;
+        color: white;
+        position: relative;
+        text-align: center;
 
-      div {
-        position: absolute;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        width: 100%;
+        div {
+          position: absolute;
+          top: 50%;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          width: 100%;
+        }
       }
     }
   }
