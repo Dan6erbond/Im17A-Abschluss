@@ -129,6 +129,11 @@ const lines = [{
         color: "white"
     }]
 }, {
+    strings: [{
+        value: "For the full experience make sure you're on a desktop.",
+        color: "white"
+    }]
+}, {
     strings: []
 }, {
     strings: [{
