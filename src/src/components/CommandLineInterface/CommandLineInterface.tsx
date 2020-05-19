@@ -183,15 +183,17 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
             case "c":
                 if (this.state.controlDown) {
                     this.writeLine({strings: [{value: " ^C"}]}, this.emptyLine);
+                    event.preventDefault();
                 }
-                event.preventDefault();
                 break;
             case "Insert":
-                navigator.clipboard.readText()
-                    .then(text => {
-                        this.writeLine({strings: [{value: text}]});
-                    });
-                event.preventDefault();
+                if (this.state.shiftDown) {
+                    navigator.clipboard.readText()
+                        .then(text => {
+                            this.writeLine({strings: [{value: text}]});
+                        });
+                    event.preventDefault();
+                }
                 break;
         }
     };
