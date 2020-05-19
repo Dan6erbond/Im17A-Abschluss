@@ -1,4 +1,4 @@
-import {Layer, Line, Rect, Stage} from "react-konva";
+import {Image, Layer, Line, Rect, Stage} from "react-konva";
 import * as React from "react";
 import useImage from "use-image";
 import {Spring, animated} from 'react-spring/renderprops-konva';
@@ -41,8 +41,8 @@ function SelectaItem(props: SelectaItemProps) {
                     displayComponent(children);
                     setDisplay(false);
                 }, 550);
-            });
-        }, 500);
+            }, 550);
+        }, 550);
     };
 
     return (
@@ -73,6 +73,10 @@ interface SelectaProps {
 export default function Selecta(props: SelectaProps) {
     const {selectaRef} = props;
 
+    const [selecta] = useImage(process.env.PUBLIC_URL + "/res/img/fjerg/selecta.png");
+    const selectaWidth = 800;
+    const selectaHeight = selecta ? selecta.height / selecta.width * selectaWidth : selectaWidth;
+
     const [egg] = useImage(process.env.PUBLIC_URL + "/res/img/fjerg/kinder-ueberraschungsei.png");
 
     const eggWidth = 50;
@@ -99,34 +103,26 @@ export default function Selecta(props: SelectaProps) {
                             width={500}
                             height={800}
                             fill="#f3f3f3"/>
-                        {Array.from(Array(3).keys()).map((i) => <React.Fragment key={i}>
-                            <Line x={50}
-                                  y={(i + 1) * 150}
-                                  points={[0, 0, 400, 0]}
-                                  strokeWidth={2}
-                                  stroke="black"/>
-                        </React.Fragment>)}
-                        <Line
-                            x={50}
-                            y={300}
-                            points={[0, 300, 400, 300]}
-                            strokeWidth={5}
-                            stroke="black"/>
+                        <Image x={-150}
+                               y={-10}
+                               image={selecta}
+                               height={selectaHeight}
+                               width={selectaWidth}/>
                     </Layer>
                     <Layer>
                         {Array.from(Array(3).keys()).map((i) => <React.Fragment key={i}>
                             {Array.from(Array(3).keys()).map((j) =>
-                                <SelectaItem x={75 + j * 150}
-                                             y={(i + 1) * 150 - 75}
+                                <SelectaItem x={120 + j * 80}
+                                             y={(i + 1) * 130 + 50}
                                              image={egg}
                                              height={eggHeight} width={eggWidth}
-                                             selectedX={225} selectedY={655}
+                                             selectedX={200} selectedY={570}
                                              largeHeight={largeEggHeight} largeWidth={largeEggWidth}
                                              largeX={100} largeY={150}
                                              displayComponent={setEggComponent}
                                              key={j + i * 3}>
                                     <KinderEgg setComponent={setEggComponent}
-                                               surprise={shuffledStudents[Math.min(j + i * 3, shuffledStudents.length - 1)].img}/>
+                                               surprise={shuffledStudents[Math.min(j * 3 + i, shuffledStudents.length - 1)].img}/>
                                 </SelectaItem>)}
                         </React.Fragment>)}
                     </Layer>
