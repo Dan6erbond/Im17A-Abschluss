@@ -87,6 +87,10 @@ export default function FrankfurtSlideshow(props: FrankfurtSlideshowProps) {
     const {english} = props;
 
     return (
-        <Slideshow images={images.map(i => ({path: "./res/img/frankfurt/" + i.filename, title: english ? i.titleEnglish || i.title : i.title, sub: i.sub}))}/>
+        <Slideshow shuffle images={images.map(i => ({
+            path: "./res/img/frankfurt/" + i.filename,
+            title: english ? i.titleEnglish || i.title : i.title,
+            sub: i.sub
+        }))}/>
     );
 }
