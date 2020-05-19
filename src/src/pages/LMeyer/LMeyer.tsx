@@ -1,6 +1,7 @@
 import * as React from "react";
 import {Commandlet} from "../../components/CommandLineInterface/CommandLineInterface";
 import Bash from "../../components/CommandLineInterface/Bash/Bash";
+import LinuxWindow from "../../components/Window/LinuxWindow/LinuxWindow";
 
 const modules = [
     {
@@ -52,7 +53,7 @@ const feedback: Feedback[] = [
     }
 ];
 
-const commandlets: Commandlet[] = [
+let commandlets: Commandlet[] = [
     {
         command: /help/,
         onRun: [
@@ -140,8 +141,28 @@ const lines = [{
 }];
 
 export default function LMeyer() {
+    const [showTree, setShowTree] = React.useState(false);
+
+    commandlets.push({
+        command: /tree/,
+        onRun: (result) => {
+            setShowTree(true);
+            return [];
+        }
+    });
+
     return (
         <div className="l-meyer">
+            <LinuxWindow title="Wertebaum" style={{
+                display: showTree ? 'block' : 'none',
+                position: 'absolute',
+                height: '90vh',
+                width: '90vw',
+                top: '50%',
+                left: '50%',
+                transform: 'translateY(-50%) translateX(-50%)',
+                msTransform: 'translateY(-50%) translateX(-50%)'
+            }} onClose={() => setShowTree(false)}/>
             <Bash username="lmeyer" pcName="ribahom" commandlets={commandlets} lines={lines}/>
         </div>
     );
