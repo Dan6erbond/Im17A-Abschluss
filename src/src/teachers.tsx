@@ -2,6 +2,7 @@ import React from "react";
 import MGuignard from "./pages/MGuignard/MGuignard";
 import FJerg from "./pages/FJerg/FJerg";
 import DSchneeberger from "./pages/DSchneeberger/DSchneeberger";
+import RWeidmann from "./pages/RWeidmann/RWeidmann";
 import LMeyer from "./pages/LMeyer/LMeyer";
 import AFlick from "./pages/AFlick/AFlick";
 
@@ -76,6 +77,7 @@ export const teachers: teacher[] = [
     {
         name: "Réne Weidmann",
         path: "iy4e0Rr",
-        img: "./res/img/teachers/weidmann_rene.jpg"
+        img: "./res/img/teachers/weidmann_rene.jpg",
+        component: <RWeidmann/>
     }
 ];

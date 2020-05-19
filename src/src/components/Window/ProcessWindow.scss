@@ -1,0 +1,30 @@
+.window {
+  width: 300px;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #0c0f16;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ececec;
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    background: #0c0f16;
+    color: white;
+
+    .title, .close {
+      padding: 5px 10px;
+
+      svg {
+        color: white;
+        fill: white;
+      }
+    }
+
+    .close:hover {
+      background: red;
+      opacity: 1;
+    }
+  }
+}
