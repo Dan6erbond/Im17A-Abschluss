@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Col, Row} from "react-bootstrap";
 import CodeEditor from "../../components/CodeEditor/CodeEditor";
-import JOptionPane from "../../components/JOptionPane/JOptionPane";
+import JOptionPane from "../../components/Window/JOptionPane/JOptionPane";
 import {students} from "../../students";
 
 const jopMessage = "Vielen Dank für alles!";
