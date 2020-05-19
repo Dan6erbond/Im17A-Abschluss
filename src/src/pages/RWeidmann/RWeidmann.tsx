@@ -27,7 +27,13 @@ const modules = [
     }
 ];
 
-const feedback = [
+interface Feedback {
+    student: string;
+    feedback: string;
+    force?: string;
+}
+
+const feedback: Feedback[] = [
     {
         student: "Simon Kunze",
         feedback: "Es war sehr interessant, mit dem Arduino-Projekt einen Abstecher in die Embedded-Welt zu machen und mit PowerShell habe ich ein wichtiges Werkzeug für den Informatiker-Alltag erlernt."
