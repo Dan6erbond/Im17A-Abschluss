@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import "./CommandLineInterface.scss";
-import {ChangeEvent} from "react";
 
 export interface Commandlet {
     command: RegExp;
@@ -39,7 +38,6 @@ interface CommandLineInterfaceState {
     commandlets: Commandlet[];
     inputs: string[];
     inputIndex?: number;
-    content: string;
 }
 
 export default class CommandLineInterface extends React.Component<CommandLineInterfaceProps, CommandLineInterfaceState> {
@@ -56,8 +54,7 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
             controlDown: false,
             shiftDown: false,
             commandlets: this.props.commandlets,
-            inputs: [],
-            content: ""
+            inputs: []
         };
 
         this.handleKeyDown = this.handleKeyDown.bind(this);
