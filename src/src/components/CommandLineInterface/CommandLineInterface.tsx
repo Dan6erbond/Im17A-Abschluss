@@ -65,7 +65,6 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
         this.handleEnter = this.handleEnter.bind(this);
         this.writeLine = this.writeLine.bind(this);
         this.getPath = this.getPath.bind(this);
-        this.handleTextChange = this.handleTextChange.bind(this);
     }
 
     public getPathString() {
@@ -108,8 +107,13 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
             newLines.push(newLine);
         }
 
-        this.setState({lines: newLines});
-        if (this.cliRef.current) this.cliRef.current.scrollTop = this.cliRef.current.scrollHeight;
+        this.setState({lines: newLines}, () => {
+            if (this.cliRef.current) {
+                // let start = this.cliRef.current.selectionStart;
+                // this.cliRef.current.selectionStart = this.cliRef.current.selectionEnd = start + 1;
+                this.cliRef.current.scrollTop = this.cliRef.current.scrollHeight;
+            }
+        });
     }
 
     public handleEnter() {
@@ -122,7 +126,6 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
 
         let newInputs = Object.assign([], this.state.inputs);
         newInputs.push(input);
-        console.log(newInputs);
         this.setState({inputs: newInputs, inputIndex: undefined});
 
         for (let i = 0; i < commandlets.length; i++) {
@@ -158,18 +161,17 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
     }
 
     public handleKeyDown(event: React.KeyboardEvent<HTMLDivElement | HTMLTextAreaElement>) {
+        event.preventDefault();
+
         switch (event.key) {
             case "Enter":
                 this.handleEnter();
-                event.preventDefault();
                 break;
             case "Control":
                 this.setState({controlDown: true});
-                event.preventDefault();
                 break;
             case "Shift":
                 this.setState({shiftDown: true});
-                event.preventDefault();
                 break;
             case "ArrowUp":
                 if (this.state.inputs.length > 0) {
@@ -179,12 +181,14 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                     if (this.state.inputIndex !== undefined) {
                         strings[strings.length - 1].value = this.state.inputs[newInputIndex];
                     } else {
-                        strings.push({value: this.state.inputs[newInputIndex], color: this.props.inputColor || "inherit"});
+                        strings.push({
+                            value: this.state.inputs[newInputIndex],
+                            color: this.props.inputColor || "inherit"
+                        });
                     }
                     newLines[newLines.length - 1].strings = strings;
                     this.setState({lines: newLines, inputIndex: newInputIndex});
                 }
-                event.preventDefault();
                 break;
             case "ArrowDown":
                 if (this.state.inputs.length > 0) {
@@ -194,17 +198,18 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                     if (this.state.inputIndex !== undefined) {
                         strings[strings.length - 1].value = this.state.inputs[newInputIndex];
                     } else {
-                        strings.push({value: this.state.inputs[newInputIndex], color: this.props.inputColor || "inherit"});
+                        strings.push({
+                            value: this.state.inputs[newInputIndex],
+                            color: this.props.inputColor || "inherit"
+                        });
                     }
                     newLines[newLines.length - 1].strings = strings;
                     this.setState({lines: newLines, inputIndex: newInputIndex});
                 }
-                event.preventDefault();
                 break;
             case "c":
                 if (this.state.controlDown) {
                     this.writeLine({strings: [{value: " ^C"}]}, this.emptyLine);
-                    event.preventDefault();
                 }
                 break;
             case "Insert":
@@ -213,7 +218,6 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                         .then(text => {
                             this.writeLine({strings: [{value: text}]});
                         });
-                    event.preventDefault();
                 }
                 break;
             case "Backspace":
@@ -227,8 +231,13 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                     newLines[newLines.length - 1].strings = strings;
                     this.setState({lines: newLines});
                 }
-                event.preventDefault();
                 break;
+            default:
+                if (event.key.match(/^(.)?$/)) {
+                    this.writeLine({strings: [{value: event.key, color: this.props.inputColor || "inherit"}]});
+                } else {
+                    console.log(event.key);
+                }
         }
     };
 
@@ -240,35 +249,22 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
         }
     };
 
-    public handleTextChange(event: ChangeEvent<HTMLTextAreaElement>) {
-        let text = event.target.value;
-
-        if (text.length > this.state.content.length) {
-            this.writeLine({strings: [{value: text[text.length - 1], color: this.props.inputColor || "inherit"}]});
-            this.setState({content: text});
-        }
-    }
-
     render() {
         return (
-            <div className="cli-container">
-                <textarea className="input"
-                          onChange={this.handleTextChange}
-                          onKeyDown={this.handleKeyDown}
-                          onKeyUp={this.handleKeyUp}/>
-                <div className="cli" ref={this.cliRef}>
-                    {this.state.lines.map((l, i) =>
-                        <span key={i}
-                              style={{
-                                  color: l.color || "white",
-                                  fontSize: `${l.fontSize || this.props.defaultFontSize || 14}px`
-                              }}>
-                        {l.strings.map((s, i) => <span key={i} style={s.color ? {
-                            color: s.color
-                        } : undefined}>{s.value}</span>)}
-                            <br/>
-                </span>)}
-                </div>
+            <div className="cli" ref={this.cliRef}
+                 contentEditable suppressContentEditableWarning
+                 onKeyDown={this.handleKeyDown}
+                 onKeyUp={this.handleKeyUp}>
+                {this.state.lines.map((l, i) =>
+                    <span key={i}
+                          style={{
+                              color: l.color || "white",
+                              fontSize: `${l.fontSize || this.props.defaultFontSize || 14}px`
+                          }}>
+                        {l.strings.map((s, i) => <span key={i}
+                                                       style={s.color ? {color: s.color} : undefined}>{s.value}</span>)}
+                        <br/></span>
+                )}
             </div>
         );
     }
