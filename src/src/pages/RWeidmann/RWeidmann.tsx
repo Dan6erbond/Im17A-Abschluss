@@ -71,12 +71,21 @@ const commandlets: Commandlet[] = [
                 ]
             },
             {
-                strings: [{value: "GET-MODULES [MODULE]"}]
+                strings: [{value: "GET-MODULES [MODUL]"}]
             },
             {
                 strings: [
                     {value: "\u00A0\u00A0\u00A0\u00A0"},
                     {value: "Zeigt alle im Unterricht behandelten Module an."}
+                ]
+            },
+            {
+                strings: [{value: "GET-FEEDBACK [SCHUELER] --f/-FORCE"}]
+            },
+            {
+                strings: [
+                    {value: "\u00A0\u00A0\u00A0\u00A0"},
+                    {value: "Zeigt Unterrichtsfeedback von dem angegebenen Schüler an."}
                 ]
             }
         ]
