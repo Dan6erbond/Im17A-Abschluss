@@ -8,6 +8,7 @@ export default function LKlink() {
     return (
         <div className="l-klink">
             <Banner text=""/>
+            <FrankfurtSlideshow/>
         </div>
     );
 }
