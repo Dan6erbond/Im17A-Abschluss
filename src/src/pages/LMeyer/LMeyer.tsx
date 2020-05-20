@@ -58,12 +58,21 @@ let commandlets: Commandlet[] = [
         command: /help/,
         onRun: [
             {
-                strings: [{value: "modules [module]"}]
+                strings: [{value: "modules [modul]"}]
             },
             {
                 strings: [
                     {value: "\u00A0\u00A0\u00A0\u00A0"},
                     {value: "Zeigt alle im Unterricht behandelten Module an."}
+                ]
+            },
+            {
+                strings: [{value: "feedback [schueler] -f/--force"}]
+            },
+            {
+                strings: [
+                    {value: "\u00A0\u00A0\u00A0\u00A0"},
+                    {value: "Zeigt Unterrichtsfeedback von dem angegebenen Schüler an."}
                 ]
             }
         ]
