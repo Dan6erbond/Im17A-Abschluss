@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 .m-guignard {
   button {
@@ -10,9 +11,35 @@
   }
 
   .banner {
+    &, .scroll-button svg {
+      background-color: #8857c2;
+      color: white;
+    }
+
     .late-text {
       font-family: 'Balsamiq Sans', cursive;
       font-size: 24px;
+      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      max-width: 600px;
+      padding: 25px;
+      margin: 0 auto;
+      background-color: white;
+      color: black;
+    }
+
+    button {
+      font-family: 'Balsamiq Sans', cursive !important;
+      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      background-color: #477f28;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 10px;
+      min-width: 300px;
     }
   }
 

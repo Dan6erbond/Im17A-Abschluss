@@ -44,7 +44,7 @@ const getDuration = function (d1: any, d2: any) {
             return `${diffYears} years, ${diffMonths} months, ${diffDays} days, ${diffHours} hours, ${diffMinutes} minutes and ${diffSeconds} seconds`;
         }
     };
-}
+};
 
 export default function MGuignard() {
     const [lateEvent] = React.useState<typeof lateEvents[0]>(lateEvents[Math.floor(Math.random() * lateEvents.length)]);
@@ -54,7 +54,9 @@ export default function MGuignard() {
     return (
         <div className="m-guignard">
             <Banner text="Thank you for the wonderful three years, Ms Guignard!">
-                <motion.p variants={{
+                <br/>
+                <br/>
+                <motion.div variants={{
                     hidden: {
                         translateX: '100%'
                     },
@@ -64,9 +66,12 @@ export default function MGuignard() {
                 }} transition={{duration: 0.5}} className="late-text">
                     PS: You are {getDuration(lateEvent.date, Date.now()).toString()} too late
                     to {lateEvent.name}.
-                </motion.p>
-                <ScrollButton scrollRef={limericksTitleRef}
-                              icon={faGlassCheers} text="Scroll Down"/>
+                </motion.div>
+                <br/>
+                <br/>
+                <button>
+                    Continue
+                </button>
             </Banner>
 
             <Limericks limericksTitleRef={limericksTitleRef}/>
