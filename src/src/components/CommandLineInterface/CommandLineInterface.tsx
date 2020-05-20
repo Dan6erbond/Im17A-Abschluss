@@ -38,6 +38,7 @@ interface CommandLineInterfaceState {
     shiftDown: boolean;
     commandlets: Commandlet[];
     inputs: string[];
+    inputIndex?: number;
     content: string;
 }
 
@@ -121,7 +122,8 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
 
         let newInputs = Object.assign([], this.state.inputs);
         newInputs.push(input);
-        this.setState({inputs: newInputs});
+        console.log(newInputs);
+        this.setState({inputs: newInputs, inputIndex: undefined});
 
         for (let i = 0; i < commandlets.length; i++) {
             let result = commandlets[i].command.exec(input);
@@ -171,12 +173,31 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                 break;
             case "ArrowUp":
                 if (this.state.inputs.length > 0) {
-                    this.writeLine({
-                        strings: [{
-                            value: this.state.inputs[this.state.inputs.length - 1],
-                            color: this.props.inputColor || "inherit"
-                        }]
-                    });
+                    let newInputIndex = this.state.inputIndex ? Math.max(0, this.state.inputIndex - 1) : this.state.inputs.length - 1;
+                    let newLines: CLILine[] = Object.assign([], this.state.lines);
+                    let strings = newLines[newLines.length - 1].strings;
+                    if (this.state.inputIndex !== undefined) {
+                        strings[strings.length - 1].value = this.state.inputs[newInputIndex];
+                    } else {
+                        strings.push({value: this.state.inputs[newInputIndex], color: this.props.inputColor || "inherit"});
+                    }
+                    newLines[newLines.length - 1].strings = strings;
+                    this.setState({lines: newLines, inputIndex: newInputIndex});
+                }
+                event.preventDefault();
+                break;
+            case "ArrowDown":
+                if (this.state.inputs.length > 0) {
+                    let newInputIndex = this.state.inputIndex !== undefined && this.state.inputIndex < this.state.inputs.length - 1 ? Math.min(this.state.inputs.length - 1, this.state.inputIndex + 1) : 0;
+                    let newLines: CLILine[] = Object.assign([], this.state.lines);
+                    let strings = newLines[newLines.length - 1].strings;
+                    if (this.state.inputIndex !== undefined) {
+                        strings[strings.length - 1].value = this.state.inputs[newInputIndex];
+                    } else {
+                        strings.push({value: this.state.inputs[newInputIndex], color: this.props.inputColor || "inherit"});
+                    }
+                    newLines[newLines.length - 1].strings = strings;
+                    this.setState({lines: newLines, inputIndex: newInputIndex});
                 }
                 event.preventDefault();
                 break;
