@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container} from "react-bootstrap";
 import {teachers} from "../../teachers";
 import Banner from "../../components/Banner/Banner";
 import VizSensor from "react-visibility-sensor";

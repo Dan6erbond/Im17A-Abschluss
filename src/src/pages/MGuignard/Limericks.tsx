@@ -50,8 +50,6 @@ interface LimericksProps {
 }
 
 export default function Limericks (props: LimericksProps) {
-    const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
-
     const {limericksTitleRef} = props;
 
     const [limericksTitleVisible, setLimericksTitleVisible] = React.useState<boolean>(false);

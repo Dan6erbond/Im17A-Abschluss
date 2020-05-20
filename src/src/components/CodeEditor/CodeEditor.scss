@@ -1,0 +1,135 @@
+.code-editor {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 20px;
+  background: rgb(34, 34, 34);
+  height: 90vh;
+  width: 90vw;
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(38, 50, 56);
+
+    .title {
+      margin: 10px;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .buttons {
+      div {
+        height: 30px;
+        width: 30px;
+        margin: 5px;
+        padding: 5px 7px 0;
+        border-radius: 50%;
+        display: inline-block;
+
+        &:hover {
+          background-color: #82284b;
+        }
+
+        &.disabled {
+          svg {
+            color: #7a7a7b !important;
+          }
+        }
+
+        svg {
+          height: 15px;
+          width: 15px;
+
+          &.fa-play {
+            color: #00a700;
+          }
+
+          &.fa-square {
+            color: #fd526f;
+          }
+
+          &.fa-undo {
+            color: #4cb5ab;
+          }
+        }
+      }
+    }
+  }
+
+  .editor {
+    flex: 500;
+    position: relative;
+    border: 1px solid rgb(34, 34, 34);
+    background: rgb(34, 34, 34);
+
+    .input, .output {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      border: none;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      white-space: pre-wrap;
+      line-height: 1.5em;
+      word-wrap: break-word;
+      font-size: 0.8rem;
+      outline: none;
+    }
+
+    .input {
+      opacity: 1;
+      margin: 0;
+      color: rgb(34, 34, 34);
+      resize: none;
+      background: rgb(34, 34, 34);
+      text-shadow: none;
+      caret-color: white;
+      font-family: Menlo, Monaco, "Courier New", monospace;
+      direction: ltr;
+      text-align: left;
+      word-spacing: normal;
+      white-space: pre;
+      overflow-wrap: normal;
+      line-height: 1.4;
+      border: 0;
+      tab-size: 4;
+      hyphens: none;
+
+      &::selection {
+        color: rgb(34, 34, 34);
+        background: #61a2ff;
+      }
+    }
+
+    .output {
+      pointer-events: none;
+      overflow-y: auto;
+      z-index: 3;
+
+      code {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 1rem;
+        display: block;
+        color: hsl(0, 0%, 40%);
+        font-size: 0.8rem;
+      }
+    }
+
+    .output, .output code {
+      background: transparent !important;
+      margin: 0 !important;
+    }
+  }
+
+  .run {
+    border: 10px solid #263238;
+    padding: 10px;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    color: white;
+  }
+}

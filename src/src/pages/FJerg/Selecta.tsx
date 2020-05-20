@@ -3,12 +3,7 @@ import * as React from "react";
 import useImage from "use-image";
 import {Spring, animated} from 'react-spring/renderprops-konva';
 import KinderEgg from "./KinderEgg";
-
-const students = [
-    "./res/img/students/ravi.png", "./res/img/students/alain.png", "./res/img/students/albion.png",
-    "./res/img/students/aron.png", "./res/img/students/felix.png", "./res/img/students/simon.png",
-    "./res/img/students/tim.png", "./res/img/students/alex.png"
-];
+import {students} from "../../students";
 
 interface SelectaItemProps {
     image: CanvasImageSource | undefined;
@@ -94,7 +89,7 @@ export default function Selecta(props: SelectaProps) {
         <div className="selecta-machine" ref={selectaRef}>
             <div>
                 <h2>Selecta</h2>
-                <h3>Wählen Sie ein Überraschungsei aus!</h3>
+                <h3>Nehmen Sie ein Überraschungsei oder zwei für die Reise!</h3>
                 <br/>
                 <Stage height={800} width={500}>
                     <Layer>
@@ -131,7 +126,7 @@ export default function Selecta(props: SelectaProps) {
                                              displayComponent={setEggComponent}
                                              key={j + i * 3}>
                                     <KinderEgg setComponent={setEggComponent}
-                                               surprise={shuffledStudents[Math.min(j + i * 3, shuffledStudents.length - 1)]}/>
+                                               surprise={shuffledStudents[Math.min(j + i * 3, shuffledStudents.length - 1)].img}/>
                                 </SelectaItem>)}
                         </React.Fragment>)}
                     </Layer>
