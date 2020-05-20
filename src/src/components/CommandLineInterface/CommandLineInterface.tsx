@@ -195,6 +195,19 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                     event.preventDefault();
                 }
                 break;
+            case "Backspace":
+                let newLines: CLILine[] = Object.assign([], this.state.lines);
+                let strings = newLines[newLines.length - 1].strings;
+                let lastString = strings[strings.length - 1];
+
+                if (!lastString.readonly) {
+                    lastString.value = lastString.value.substring(0, lastString.value.length - 1);
+                    if (lastString.value.length === 0) strings.pop();
+                    newLines[newLines.length - 1].strings = strings;
+                    this.setState({lines: newLines});
+                }
+                event.preventDefault();
+                break;
         }
     };
 
@@ -212,19 +225,6 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
         if (text.length > this.state.content.length) {
             this.writeLine({strings: [{value: text[text.length - 1], color: this.props.inputColor || "inherit"}]});
             this.setState({content: text});
-        } else {
-            let newLines: CLILine[] = Object.assign([], this.state.lines);
-            let strings = newLines[newLines.length - 1].strings;
-            let lastString = strings[strings.length - 1];
-
-            if (!lastString.readonly) {
-                lastString.value = lastString.value.substring(0, lastString.value.length - 1);
-                if (lastString.value.length === 0) strings.pop();
-                newLines[newLines.length - 1].strings = strings;
-                this.setState({lines: newLines, content: text});
-            } else {
-                event.preventDefault();
-            }
         }
     }
 
