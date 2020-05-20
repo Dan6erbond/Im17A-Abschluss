@@ -94,7 +94,7 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i];
 
-            let newLine = i == 0 ? {
+            let newLine = i === 0 ? {
                 strings: lastLine.strings.concat(line.strings as any),
                 color: lastLine.color,
                 fontSize: lastLine.fontSize
@@ -104,7 +104,7 @@ export default class CommandLineInterface extends React.Component<CommandLineInt
                 fontSize: line?.fontSize
             };
 
-            if (i == 0) newLines.pop();
+            if (i === 0) newLines.pop();
             newLines.push(newLine);
         }
 
