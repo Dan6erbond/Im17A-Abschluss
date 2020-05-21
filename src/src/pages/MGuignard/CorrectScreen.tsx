@@ -1,10 +1,16 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCaretRight, faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faCaretDown, faCaretRight, faCheck} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import {MGuignardPageProps} from "./MGuignard";
 
-export default function CorrectScreen(props: MGuignardPageProps) {
-    const {setComponent, points, pages} = props;
+interface CorrectScreenProps extends MGuignardPageProps {
+    scrollRef: React.RefObject<any>;
+}
+
+export default function CorrectScreen(props: CorrectScreenProps) {
+    const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
+
+    const {setComponent, points, pages, scrollRef} = props;
 
     return (
         <div className="correct-screen">
@@ -19,6 +25,10 @@ export default function CorrectScreen(props: MGuignardPageProps) {
                 <br/>
                 <br/>
                 <h3>Scroll Down</h3>
+                <br/>
+                <button onClick={() => scrollToRef(scrollRef)}>
+                    <FontAwesomeIcon icon={faCaretDown} style={{height: '35px', width: '35px'}}/>
+                </button>
             </div>
         </div>
     );

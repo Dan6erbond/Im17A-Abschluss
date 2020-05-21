@@ -44,13 +44,11 @@ const limericks = [
 ];
 
 export default function Limericks (props: MGuignardPageProps) {
-    const {setComponent} = props;
-
     const limericksRef = React.createRef<HTMLDivElement>();
 
     return (
         <div className="limericks">
-            <CorrectScreen {...props}/>
+            <CorrectScreen {...props} scrollRef={limericksRef}/>
 
             <div ref={limericksRef}>
                 <Carousel fade>

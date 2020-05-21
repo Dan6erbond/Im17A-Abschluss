@@ -43,7 +43,7 @@ export default function ClassTrip(props: MGuignardPageProps) {
 
     return (
         <div className="class-trip">
-            <CorrectScreen {...props}/>
+            <CorrectScreen {...props} scrollRef={classTripRef}/>
 
             <div ref={classTripRef}>
                 <FrankfurtSlideshow english/>
