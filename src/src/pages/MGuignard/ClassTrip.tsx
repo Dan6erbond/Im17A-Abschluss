@@ -1,10 +1,8 @@
-import VizSensor from "react-visibility-sensor";
-import {motion} from "framer-motion";
-import {Carousel, Col, Container, Row} from "react-bootstrap";
-import {faBuilding} from "@fortawesome/free-solid-svg-icons";
+import {Col, Container, Row} from "react-bootstrap";
 import * as React from "react";
-import ScrollButton from "../../components/ScrollButton/ScrollButton";
 import FrankfurtSlideshow from "../../components/Slideshow/Frankfurt/FrankfurtSlideshow";
+import CorrectScreen from "./CorrectScreen";
+import {MGuignardPageProps} from "./MGuignard";
 
 const images = [
     "20180924_131103.jpg",
@@ -23,10 +21,7 @@ const images = [
     "IMG_20180927_094955.jpg"
 ];
 
-export default function ClassTrip() {
-    const [classTripTitleVisible, setClassTripTitleVisible] = React.useState<boolean>(false);
-
-    const classTripTitleRef = React.createRef<HTMLDivElement>();
+export default function ClassTrip(props: MGuignardPageProps) {
     const classTripRef = React.createRef<HTMLDivElement>();
 
     const generatePictureGrid = () => {
@@ -48,34 +43,7 @@ export default function ClassTrip() {
 
     return (
         <div className="class-trip">
-            <div ref={classTripTitleRef} className="class-trip-title">
-                <VizSensor partialVisibility onChange={isVisible => {
-                    if (isVisible && !classTripTitleVisible)
-                        setClassTripTitleVisible(true);
-                }}>
-                    <motion.div initial="hidden" animate={classTripTitleVisible ? "visible" : "hidden"} variants={{
-                        hidden: {
-                            opacity: 0
-                        },
-                        visible: {
-                            opacity: 1
-                        }
-                    }} transition={{duration: 1}}>
-                        <motion.h4 variants={{
-                            hidden: {
-                                translateY: '-40%'
-                            },
-                            visible: {
-                                translateY: 0
-                            }
-                        }} transition={{duration: 1}}>
-                            Remember Frankfurt?
-                        </motion.h4>
-                        <ScrollButton scrollRef={classTripRef}
-                                      icon={faBuilding} text="Scroll Down"/>
-                    </motion.div>
-                </VizSensor>
-            </div>
+            <CorrectScreen {...props}/>
 
             <div ref={classTripRef}>
                 <FrankfurtSlideshow english/>

@@ -2,67 +2,150 @@
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 .m-guignard {
+  .kahoot-shadow {
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  .page {
+    &-enter {
+      transform: translateX(100%);
+    }
+
+    &-enter-active, &-enter-done {
+      transform: translateX(0);
+      transition: all 300ms;
+    }
+
+    &-exit {
+      transform: translateX(0);
+    }
+
+    &-exit-active, &-exit-done {
+      transform: translateX(-100%);
+      transition: all 300ms;
+    }
+  }
+
   button {
+    @extend .kahoot-shadow;
+    font-family: 'Balsamiq Sans', cursive !important;
+    background: #477f28;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px;
+    min-width: 300px;
     border: none;
-    font-family: 'Yellowtail', cursive !important;
-    display: inline-block;
   }
 
   .banner {
     &, .scroll-button svg {
-      background-color: #8857c2;
+      background: #8857c2;
       color: white;
     }
 
     .late-text {
+      @extend .kahoot-shadow;
       font-family: 'Balsamiq Sans', cursive;
       font-size: 24px;
-      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       max-width: 600px;
       padding: 25px;
       margin: 0 auto;
-      background-color: white;
+      background: white;
       color: black;
     }
+  }
 
-    button {
-      font-family: 'Balsamiq Sans', cursive !important;
-      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      background-color: #477f28;
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
+  .correct-screen {
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Balsamiq Sans', cursive !important;
+    background: #65bd39;
+    color: white;
+    text-align: center;
+
+    & > div:first-of-type {
+      background: white;
       padding: 10px;
-      min-width: 300px;
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        padding: 5px;
+        font-size: 24px;
+        color: black;
+        margin: 0;
+      }
+
+      button {
+        padding: 5px;
+        min-width: 150px;
+        background: black;
+        border-radius: 2px;
+      }
+    }
+
+    & > div:nth-child(2) {
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 100%;
+    }
+  }
+
+  .page-selection {
+    min-height: 100vh;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h1 {
+      background: white;
+      @extend .kahoot-shadow;
+      padding: 15px;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      margin-bottom: 50px;
+
+      button {
+        height: 100%;
+        width: 100%;
+        padding: 20px 0;
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: normal;
+
+        &.red {
+          background: #df1a3c;
+        }
+
+        &.blue {
+          background: #1367cc;
+        }
+
+        &.yellow {
+          background: #d79d01;
+        }
+
+        &.green {
+          background: #298e0e;
+        }
+      }
     }
   }
 
   .limericks {
     font-family: 'Yellowtail', cursive;
-
-    .limericks-title {
-      text-align: center;
-      min-height: 100vh;
-      position: relative;
-
-      & > div {
-        position: absolute;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        width: 100%;
-
-        h4 {
-          font-size: 4em;
-        }
-      }
-    }
 
     .carousel {
       background: #535353;
@@ -112,6 +195,41 @@
           font-size: 4em;
         }
       }
+    }
+  }
+
+  .podium {
+    min-height: 100vh;
+    background: #45268a;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+
+    .medal {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      background: #f6ba09;
+      color: white;
+      position: relative;
+      text-align: center;
+      margin: 0 auto;
+
+      div {
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 100%;
+        font-size: 64px;
+      }
+    }
+
+    div:nth-child(2) {
+      text-align: center;
+      font-size: 48px;
+      color: white;
+      padding: 40px 0;
+      font-style: italic;
     }
   }
 }
