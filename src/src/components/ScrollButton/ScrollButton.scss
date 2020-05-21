@@ -2,7 +2,6 @@
 
 .scroll-button {
   button {
-    @extend .scroll-button;
     @extend .btn;
     @extend .btn-outline-dark;
 
