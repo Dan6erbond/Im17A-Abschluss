@@ -2,6 +2,7 @@ import * as React from "react";
 import {Container} from "react-bootstrap";
 
 import "./Imprint.scss";
+import {Link} from "react-router-dom";
 
 export default function Imprint() {
     return (
@@ -38,6 +39,8 @@ export default function Imprint() {
             <p>
                 <b>Fonts:</b> Alle eingesetzten Fonts, sind auf Google Fonts zu finden.
             </p>
+            <br/>
+            <Link style={{float: 'right'}} to="/">« Zurück</Link>
         </Container>
     );
 }
