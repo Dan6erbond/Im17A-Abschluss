@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
-@import "~bootstrap/scss/bootstrap";
-
 body {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Barlow', sans-serif !important;
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+@import "~bootstrap/scss/bootstrap";
