@@ -29,8 +29,15 @@ export default function Imprint() {
             </p>
             <p>
                 Dominik Berger
+                <br/>
+                Büttenen
+                <br/>
+                6006 Luzern
+                <br/>
+                Schweiz
+                <br/>
             </p>
-            <h3>Credits</h3>
+            <h3>Danksagung</h3>
             <p>
                 <b>Layout:</b> React-Bootstrap wurde für das allgemeine Layout eingesetzt.
             </p>
@@ -38,9 +45,9 @@ export default function Imprint() {
                 <b>Icons:</b> Die meisten Icons stammen aus dem Fontawesome Icon-Repository.
             </p>
             <p>
-                <b>Fonts:</b> Alle eingesetzten Fonts, sind auf Google Fonts zu finden.
+                <b>Schriftarten:</b> Alle eingesetzten Fonts, sind auf Google Fonts zu finden.
             </p>
-            <h4>Pages</h4>
+            <h4>Erstellte Seiten</h4>
             <Container>
                 <Row>
                     <Col md={6} sm={12}>
