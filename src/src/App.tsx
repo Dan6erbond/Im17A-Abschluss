@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {Route, Switch, useLocation} from "react-router";
 import Home from "./pages/Home/Home";
 import {teachers} from "./teachers";
+import Imprint from "./pages/Imprint/Imprint";
 
 function App() {
     const {pathname} = useLocation();
@@ -14,6 +15,9 @@ function App() {
         <Switch>
             <Route path="/" exact>
                 <Home/>
+            </Route>
+            <Route path="/imprint" exact>
+                <Imprint/>
             </Route>
             {teachers.map((t, i) => <Route key={i} path={`/${t.path}`}>
                 {t.component || <div>{t.name}</div>}
