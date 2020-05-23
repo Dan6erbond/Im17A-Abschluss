@@ -86,7 +86,8 @@ export default function Home() {
                                         }
                                     }
                                 }} transition={{duration: 1}}>
-                        {teachers.map((t, i) => <Col key={i} md={3} sm={6}>
+                        {teachers.map((t, i) => <Col
+                            key={i} md={3} sm={6}>
                             <TeacherCard teacher={t}/>
                         </Col>)}
                     </motion.div>
@@ -94,7 +95,7 @@ export default function Home() {
             </Container>
             <footer>
                 <span>© RaviAnand M & Dominik B, 2020</span>
-                <Link to="imprint">Impressum</Link>
+                <Link to="/imprint">Impressum</Link>
             </footer>
         </div>
     );
