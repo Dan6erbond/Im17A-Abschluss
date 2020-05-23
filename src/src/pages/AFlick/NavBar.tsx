@@ -15,18 +15,6 @@ export default function NavBar() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavLink activeClassName="active" className="nav-link"
-                             to={`/${teachers.filter(t => t.name === "Alexander Flick")[0].path}/distance-learning`}>
-                        Distance Learning
-                    </NavLink>
-                    <NavLink activeClassName="active" className="nav-link"
-                             to={`/${teachers.filter(t => t.name === "Alexander Flick")[0].path}/web-dev`}>
-                        Web-Dev
-                    </NavLink>
-                    <NavLink activeClassName="active" className="nav-link"
-                             to={`/${teachers.filter(t => t.name === "Alexander Flick")[0].path}/java`}>
-                        Java
-                    </NavLink>
                     <NavDropdown title="Lehrer" id="collasible-nav-dropdown">
                         <NavDropdown.Item>
                             <Link
@@ -60,12 +48,6 @@ export default function NavBar() {
                             </Link>
                         </NavDropdown.Item>
                     </NavDropdown>
-                </Nav>
-                <Nav>
-                    <NavLink activeClassName="active" className="nav-link"
-                             to={`/${teachers.filter(t => t.name === "Alexander Flick")[0].path}/dank-memes`}>
-                        Dank Memes
-                    </NavLink>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

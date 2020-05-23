@@ -9,28 +9,18 @@
     text-align: center;
   }
 
-  .a-flick-home {
-    .jumbotron {
-      height: 45vh;
-      min-height: 700px;
-    }
+  & > div:first-of-type { /* parallax container */
+    height: calc(100% - 60px) !important;
 
-    .carousel {
-      .carousel-item-inner {
-        background: grey;
-        height: 90vh;
-        width: 100vw;
-        color: white;
-        position: relative;
-        text-align: center;
+    .title {
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      padding: 25px 35px;
+      background: white;
+      margin: 0 auto 0 70%;
+      width: fit-content;
 
-        div {
-          position: absolute;
-          top: 50%;
-          -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-          width: 100%;
-        }
+      h2 {
+        display: inline-block;
       }
     }
   }
