@@ -1,8 +1,9 @@
 import * as React from "react";
-
-import "./RWeidmann.scss";
 import PowerShell from "../../components/CommandLineInterface/PowerShell/PowerShell";
 import {Commandlet} from "../../components/CommandLineInterface/CommandLineInterface";
+import {History} from "history";
+
+import "./RWeidmann.scss";
 
 const modules = [
     {
@@ -169,7 +170,19 @@ const lines = [{
     strings: []
 }];
 
-export default function RWeidmann() {
+interface RWeidmannProps {
+    history: History;
+}
+
+export default function RWeidmann(props: RWeidmannProps) {
+    commandlets.push({
+        command: /exit/,
+        onRun: _ => {
+            props.history.push("/");
+            return [];
+        }
+    });
+
     return (
         <div className="r-weidmann">
             <PowerShell pathColor="white" path={[{
