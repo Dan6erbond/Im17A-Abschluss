@@ -25,7 +25,13 @@ const incomeStatement = [
         income: "Korrespondenz"
     },
     {
+        expense: "Kopierkosten"
+    },
+    {
         income: "Wissenschaftliche Dokumente schreiben"
+    },
+    {
+        expense: "Hanteln zuhause lassen"
     }
 ];
 
