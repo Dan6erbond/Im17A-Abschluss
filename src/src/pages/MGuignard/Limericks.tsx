@@ -1,10 +1,8 @@
-import VizSensor from "react-visibility-sensor";
-import {motion} from "framer-motion";
 import {Carousel} from "react-bootstrap";
-import {faPenFancy} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import '../../extensions';
-import ScrollButton from "../../components/ScrollButton/ScrollButton";
+import {MGuignardPageProps} from "./MGuignard";
+import CorrectScreen from "./CorrectScreen";
 
 const limericks = [
     {
@@ -45,49 +43,12 @@ const limericks = [
     }
 ];
 
-interface LimericksProps {
-    limericksTitleRef: React.RefObject<HTMLDivElement>;
-}
-
-export default function Limericks (props: LimericksProps) {
-    const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => window.scrollTo(0, ref.current!!.offsetTop);
-
-    const {limericksTitleRef} = props;
-
-    const [limericksTitleVisible, setLimericksTitleVisible] = React.useState<boolean>(false);
-
+export default function Limericks (props: MGuignardPageProps) {
     const limericksRef = React.createRef<HTMLDivElement>();
 
     return (
         <div className="limericks">
-            <div ref={limericksTitleRef} className="limericks-title">
-                <VizSensor partialVisibility onChange={isVisible => {
-                    if (isVisible && !limericksTitleVisible)
-                        setLimericksTitleVisible(true);
-                }}>
-                    <motion.div initial="hidden" animate={limericksTitleVisible ? "visible" : "hidden"} variants={{
-                        hidden: {
-                            opacity: 0
-                        },
-                        visible: {
-                            opacity: 1
-                        }
-                    }} transition={{duration: 1}}>
-                        <motion.h4 variants={{
-                            hidden: {
-                                translateY: '-40%'
-                            },
-                            visible: {
-                                translateY: 0
-                            }
-                        }} transition={{duration: 1}}>
-                            Limericks
-                        </motion.h4>
-                        <ScrollButton scrollRef={limericksRef}
-                                      icon={faPenFancy} text="Scroll Down"/>
-                    </motion.div>
-                </VizSensor>
-            </div>
+            <CorrectScreen {...props} scrollRef={limericksRef}/>
 
             <div ref={limericksRef}>
                 <Carousel fade>

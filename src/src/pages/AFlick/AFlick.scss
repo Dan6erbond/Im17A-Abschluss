@@ -1,0 +1,27 @@
+.a-flick {
+  a, a:hover {
+    color: inherit;
+    text-decoration: inherit;
+    background-color: inherit;
+  }
+
+  h2, h4 {
+    text-align: center;
+  }
+
+  & > div:first-of-type { /* parallax container */
+    height: calc(100% - 60px) !important;
+
+    .title {
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      padding: 25px 35px;
+      background: white;
+      margin: 0 auto 0 70%;
+      width: fit-content;
+
+      h2 {
+        display: inline-block;
+      }
+    }
+  }
+}

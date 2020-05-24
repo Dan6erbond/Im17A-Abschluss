@@ -1,13 +1,15 @@
 import * as React from "react";
-import {faEgg} from "@fortawesome/free-solid-svg-icons";
+import {faEgg, faMicrochip} from "@fortawesome/free-solid-svg-icons";
 import Banner from "../../components/Banner/Banner";
 import ScrollButton from "../../components/ScrollButton/ScrollButton";
+import Selecta from "./Selecta";
+import JOPCode from "./JOPCode";
 
 import "./FJerg.scss";
-import Selecta from "./Selecta";
 
 export default function FJerg() {
     const selectaRef = React.createRef<HTMLDivElement>();
+    const jopCodeRef = React.createRef<HTMLDivElement>();
 
     return (
         <div className="f-jerg">
@@ -16,6 +18,12 @@ export default function FJerg() {
                               icon={faEgg}/>
             </Banner>
             <Selecta selectaRef={selectaRef}/>
+            <Banner text="Bereiten Sie sich nun auf schreklichen Code vor.">
+                <ScrollButton scrollRef={jopCodeRef}
+                              icon={faMicrochip}/>
+            </Banner>
+            <JOPCode jopCodeRef={jopCodeRef}/>
+            <br/>
         </div>
-    )
+    );
 }
