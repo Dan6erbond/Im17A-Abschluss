@@ -2,6 +2,7 @@ import * as React from "react";
 import {Commandlet} from "../../components/CommandLineInterface/CommandLineInterface";
 import Bash from "../../components/CommandLineInterface/Bash/Bash";
 import LinuxWindow from "../../components/Window/LinuxWindow/LinuxWindow";
+import {History} from "history";
 
 const modules = [
     {
@@ -154,13 +155,25 @@ const lines = [{
     strings: []
 }];
 
-export default function LMeyer() {
+interface LMeyerProps {
+    history: History;
+}
+
+export default function LMeyer(props: LMeyerProps) {
     const [showTree, setShowTree] = React.useState(false);
 
     commandlets.push({
         command: /tree/,
         onRun: (result) => {
             setShowTree(true);
+            return [];
+        }
+    });
+
+    commandlets.push({
+        command: /exit/,
+        onRun: _ => {
+            props.history.push("/");
             return [];
         }
     });
