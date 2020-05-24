@@ -14,7 +14,7 @@ export interface teacher {
     img?: string;
 }
 
-export const teachers: teacher[] = [
+const t: teacher[] = [
     {
         name: "Matthias Graf",
         path: "bLUb5kH",
@@ -83,3 +83,5 @@ export const teachers: teacher[] = [
         component: <RWeidmann/>
     }
 ];
+
+export const teachers = t.sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0);
