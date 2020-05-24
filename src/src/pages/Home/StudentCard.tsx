@@ -1,10 +1,10 @@
 import {Card} from "react-bootstrap";
 import React from "react";
-import {student} from "../../students";
+import {Student} from "../../students";
 import {motion} from "framer-motion";
 
 interface StudentCardProps {
-    student: student;
+    student: Student;
 }
 
 export default function StudentCard(props: StudentCardProps) {

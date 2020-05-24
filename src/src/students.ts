@@ -1,4 +1,4 @@
-export interface student {
+export interface Student {
     name: string;
     surname: string;
     img: string;
@@ -6,7 +6,7 @@ export interface student {
     href?: string;
 }
 
-export const s: student[] = [
+export const s: Student[] = [
     {
         name: "Alain",
         surname: "Siegrist",
