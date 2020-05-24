@@ -7,7 +7,7 @@ import {createHashHistory} from 'history'
 
 import "./index.scss";
 
-const hashHistory = createHashHistory();
+export const hashHistory = createHashHistory();
 
 ReactDOM.render(
     <Router history={hashHistory}>
