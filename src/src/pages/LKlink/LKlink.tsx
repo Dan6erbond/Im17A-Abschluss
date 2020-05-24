@@ -1,9 +1,43 @@
 import * as React from "react";
 import FrankfurtSlideshow from "../../components/Slideshow/Frankfurt/FrankfurtSlideshow";
 import {Parallax, ParallaxLayer} from "react-spring/renderprops-addons";
-import {Container, Table} from "react-bootstrap";
+import {Table} from "react-bootstrap";
 
 import "./LKlink.scss";
+
+const incomeStatement = [
+    {
+        income: "Klassengeist"
+    },
+    {
+        income: "FRW Themen"
+    },
+    {
+        expense: "15 Schüler"
+    },
+    {
+        income: "Planungsgeschick / Organisation"
+    },
+    {
+        expense: "Konflikt mit Schulleitung"
+    },
+    {
+        income: "Korrespondenz"
+    },
+    {
+        income: "Wissenschaftliche Dokumente schreiben"
+    }
+];
+
+const balance = [
+    {
+        asset: "Ausbildung",
+        liability: "Nerven"
+    },
+    {
+        asset: "Praktikum"
+    }
+];
 
 export default function LKlink() {
     const parallaxRef = React.createRef<Parallax>();
@@ -44,36 +78,11 @@ export default function LKlink() {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td/>
-                                <td>Klassengeist</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td/>
-                                <td>FRW Themen</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>15 Schüler</td>
-                                <td/>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td/>
-                                <td>Planungsgeschick / Organisation</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td/>
-                                <td>Korrespondenz</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td/>
-                                <td>Wissenschaftliche Dokumente schreiben</td>
-                            </tr>
+                            {incomeStatement.map((is, i) => <tr key={i}>
+                                <td>{i+1}</td>
+                                <td>{is.expense}</td>
+                                <td>{is.income}</td>
+                            </tr>)}
                             </tbody>
                         </Table>
                         <br/>
@@ -86,10 +95,10 @@ export default function LKlink() {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Ausbildung</td>
-                                <td>Nerven</td>
-                            </tr>
+                            {balance.map((b, i) => <tr>
+                                <td>{b.asset}</td>
+                                <td>{b.liability}</td>
+                            </tr>)}
                             </tbody>
                         </Table>
                         <br/>
