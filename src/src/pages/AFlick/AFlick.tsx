@@ -1,116 +1,63 @@
 import * as React from "react";
-import {Button, Jumbotron, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import Carousel from "react-bootstrap/esm/Carousel";
+import NavBar from "./NavBar";
+import {Parallax, ParallaxLayer} from "react-spring/renderprops-addons";
 
 import "./AFlick.scss";
-import {Link} from "react-router-dom";
-import {teachers} from "../../teachers";
-
-const carouselItems = [
-    {
-        title: "Bootstrap",
-        description: "Mit Bootstrap Grids können schnell Layouts aufgebaut werden."
-    },
-    {
-        title: "Java",
-        description: "Java ist einfach gay."
-    },
-    {
-        title: "jQuery",
-        description: "jQuery vereinfacht das verändern von HTML DOM-Elementen."
-    },
-    {
-        title: "API",
-        description: "Eine API erlaubt die Kommunikation mit Web-Diensten."
-    }
-];
 
 export default function AFlick() {
+    const parallaxRef = React.createRef<Parallax>();
+
     return (
         <div className="a-flick">
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand>
-                    <Link to="/">React-Bootstrap</Link>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link>
-                            Features
-                        </Nav.Link>
-                        <Nav.Link>
-                            Pricing
-                        </Nav.Link>
-                        <NavDropdown title="Lehrer" id="collasible-nav-dropdown">
-                            <NavDropdown.Item>
-                                <Link
-                                    to={teachers.filter(t => t.name === "Réne Weidmann")[0].path}>
-                                    Réne Weidmann
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link
-                                    to={teachers.filter(t => t.name === "Sascha Fiechter")[0].path}>
-                                    Sascha Fiechter
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link
-                                    to={teachers.filter(t => t.name === "Fabian Jerg")[0].path}>
-                                    Fabian Jerg
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                <Link
-                                    to={teachers.filter(t => t.name === "Lars Meyer")[0].path}>
-                                    Lars Meyer
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Divider/>
-                            <NavDropdown.Item>
-                                <Link
-                                    to={teachers.filter(t => t.name === "Alexander Flick")[0].path}>
-                                    Alexander Flick
-                                </Link>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                    <Nav>
-                        <Nav.Link>
-                            More deets
-                        </Nav.Link>
-                        <Nav.Link eventKey={2}>
-                            Dank memes
-                        </Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-            <Jumbotron>
-                <h1>Hello, world!</h1>
-                <p>
-                    Rekursion ist wenn man wieder auf die gleiche Seite, wie zuvor kommt.
-                </p>
-                <p>
-                    <Button variant="primary">
-                        <Link
-                            to={teachers.filter(t => t.name === "Alexander Flick")[0].path}>
-                            Learn More
-                        </Link>
-                    </Button>
-                </p>
-            </Jumbotron>
-            <h2>Carousel</h2>
-            <br/>
-            <Carousel>
-                {carouselItems.shuffle().map((c, i) => <Carousel.Item key={i}>
-                    <div className="carousel-item-inner">
-                        <div>
-                            <h3>{c.title}</h3>
-                            <p>{c.description}</p>
-                        </div>
+            <NavBar/>
+            <Parallax ref={parallaxRef} pages={3.5}>
+                <ParallaxLayer offset={0} speed={1}>
+                    <div style={{
+                        height: '100%',
+                        width: '100%',
+                        backgroundImage: `url('/res/img/aflick/html-code.jpg')`,
+                        backgroundSize: 'cover'
+                    }} onClick={() => parallaxRef.current?.scrollTo(0.8)}/>
+                </ParallaxLayer>
+                <ParallaxLayer offset={1} speed={-0.5}>
+                    <div className="title" onClick={() => parallaxRef.current?.scrollTo(0.8)}>
+                        <h2>Web-Dev</h2>
                     </div>
-                </Carousel.Item>)}
-            </Carousel>
+                </ParallaxLayer>
+                <ParallaxLayer offset={1.3} speed={0.1}>
+                    <div className="container-md" style={{height: '100%'}}
+                         onClick={() => parallaxRef.current?.scrollTo(1.6)}>
+                        <blockquote className="blockquote">
+                            <p className="mb-0">
+                                Dank Ihrer Einführung in Web-Design habe ich mein Portfolio als Webseite erstellt und
+                                damit mich bei Firmen für das Praktikum beworben.
+                            </p>
+                            <footer className="blockquote-footer">
+                                RaviAnand Mohabir
+                            </footer>
+                        </blockquote>
+                    </div>
+                </ParallaxLayer>
+                <ParallaxLayer offset={1.9} speed={0.3}>
+                    <div className="title">
+                        <h2>App</h2>
+                    </div>
+                </ParallaxLayer>
+                <ParallaxLayer offset={2} speed={0.1}>
+                    <div className="container-md" style={{height: '100%'}}
+                         onClick={() => parallaxRef.current?.scrollTo(2.99)}>
+                        <blockquote className="blockquote">
+                            [Insert Quote]
+                        </blockquote>
+                    </div>
+                </ParallaxLayer>
+                <ParallaxLayer offset={2.99} speed={0.4}>
+                    <div className="container-md" style={{height: '100%'}}
+                         onClick={() => parallaxRef.current?.scrollTo(0)}>
+                        <h3 style={{textAlign: 'center'}}>Vielen Dank für den spannenden Unterricht mit Ihnen!</h3>
+                    </div>
+                </ParallaxLayer>
+            </Parallax>
         </div>
     );
 }

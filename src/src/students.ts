@@ -1,4 +1,4 @@
-export interface student {
+export interface Student {
     name: string;
     surname: string;
     img: string;
@@ -6,7 +6,7 @@ export interface student {
     href?: string;
 }
 
-export const students: student[] = [
+export const s: Student[] = [
     {
         name: "Alain",
         surname: "Siegrist",
@@ -15,7 +15,8 @@ export const students: student[] = [
     {
         name: "Albion",
         surname: "Spahija",
-        img: "./res/img/students/albion.png"
+        img: "./res/img/students/albion.png",
+        plans: "Nachdem ich zuerst ein Praktikum gefunden habe und dieses dann auch erfolgreich abgeschlossen habe, will ich im Web-Bereich tätig sein und evtl. weiter studieren."
     },
     {
         name: "Alexander",
@@ -39,7 +40,7 @@ export const students: student[] = [
         name: "Felix",
         surname: "Fasler",
         img: "./res/img/students/felix.png",
-        plans: "Praktikum finden."
+        plans: "Priorität hat, ein Praktikum zu finden (wenn möglich noch für dieses Jahr). Nach dem Praktikum möchte ich an die Fachhochschule studieren gehen (womöglich berufsbegleitend)."
     },
     {
         name: "RaviAnand",
@@ -52,7 +53,7 @@ export const students: student[] = [
         name: "Simon",
         surname: "Kunze",
         img: "./res/img/students/simon.png",
-        plans: "Sterben."
+        plans: "Erst einmal ein Praktikum finden, hoffentlich noch dieses Jahr. Danach schaue ich, was auf mich zukommt..."
     },
     {
         name: "Tim",
@@ -61,3 +62,5 @@ export const students: student[] = [
         plans: "Nach dem Praktikum möchte ich meine Militärpflicht leisten, um nachher irgendwo, wahrscheinlich als Informatiker, zu arbeiten um eine eigene Wohnung zu leisten."
     }
 ];
+
+export const students = s.sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0);

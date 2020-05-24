@@ -90,6 +90,20 @@
                   margin-top: 20px;
                   text-align: justify;
                 }
+                .content-text{
+                    display: flex;
+                    p{
+                      padding-right: 25px;
+                      border-right: solid 3.5px rgba(245, 196, 61, 1);
+                      border-left: none !important;
+                      border-bottom: none !important;
+                      border-top: none !important;
+                    }
+                    span{
+                      padding-left: 5px;
+                      min-width: 40px;
+                    }
+                }
               }
             }
           }

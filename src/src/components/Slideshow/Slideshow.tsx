@@ -1,6 +1,8 @@
 import {Carousel} from "react-bootstrap";
 import * as React from "react";
 
+import "./Slideshow.scss";
+
 interface SlideshowProps {
     images: { path: string, title?: string, sub?: string }[];
     shuffle?: boolean;

@@ -1,6 +1,7 @@
 import * as React from "react";
 import {Tab, Row, Col, Nav} from "react-bootstrap";
 import DistanceLearning from "../DistanceLearning/DistanceLearning";
+import AbsenceCheck from "../AbsenceCheck/AbsenceCheck";
 
 import Burger from "./svg/burgermenu.svg";
 import Magnifying from "./svg/magnifying.svg";
@@ -31,7 +32,7 @@ function SideNavTab() {
               <DistanceLearning/>
             </Tab.Pane>
             <Tab.Pane eventKey="second">
-              <p>Content of Tab 2</p>
+              <AbsenceCheck/>
             </Tab.Pane>
           </Tab.Content>
         </Col>

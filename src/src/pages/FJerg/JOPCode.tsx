@@ -21,7 +21,7 @@ const jOptionPaneCode = `/*
  * limitations under the License.
  */
 public static void main(String[] args) {
-    string message = "${jopMessage}"; 
+    string message = "${jopMessage}";
     
     JergOptionPane.showMessageDialog(
         null,
@@ -48,9 +48,13 @@ export default function JOPCode(props: JOPCodeProps) {
     const run = () => {
         setRunText("Compiling...");
         setTimeout(() => {
-            let escaped = jOptionPaneCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            let regexp = new RegExp(escaped.replace(jopMessage, "(.*)").replace(/\s{2,}/g, "(?:\\s+)"));
-            let match = code.match(regexp);
+            let commentsReplaced = jOptionPaneCode.replace(/(\/\*(?:[\s\S]*)\*\/)|(\/\/(?:.)*)/g, "");
+            let escaped = commentsReplaced.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            let messageReplaced = escaped.replace(jopMessage, "(.*)");
+            let whitespacesReplaced = messageReplaced.replace(/(\s{2,})/g, "(?:\\s+)");
+            let regexp = new RegExp("^" + whitespacesReplaced + "$");
+
+            let match = code.replace(/(\/\*(?:[\s\S]*)\*\/)|(\/\/(?:.)*)/g, "").match(regexp);
 
             if (match) {
                 setRunText(undefined);
