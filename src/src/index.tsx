@@ -11,7 +11,7 @@ export const hashHistory = createHashHistory();
 
 ReactDOM.render(
     <Router history={hashHistory}>
-        <App/>
+        <App history={hashHistory}/>
     </Router>,
     document.getElementById('root')
 );

@@ -1,11 +1,11 @@
-import {teacher} from "../../teachers";
+import {Teacher} from "../../teachers";
 import {Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import React from "react";
 import {motion} from "framer-motion";
 
 interface TeacherCardProps{
-    teacher: teacher;
+    teacher: Teacher;
 }
 
 export default function TeacherCard(props: TeacherCardProps) {
