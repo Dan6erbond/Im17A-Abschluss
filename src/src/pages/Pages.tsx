@@ -2,6 +2,7 @@ import * as React from "react";
 import {Teacher} from "../teachers";
 import {History} from "history";
 
+import GGross from "./GGross/GGross";
 import MGuignard from "./MGuignard/MGuignard";
 import FJerg from "./FJerg/FJerg";
 import DSchneeberger from "./DSchneeberger/DSchneeberger";
@@ -15,6 +16,7 @@ type Page = {
 }
 
 const Pages: Page = {
+    GGross: GGross,
     MGuignard: MGuignard,
     FJerg: FJerg,
     DSchneeberger: DSchneeberger,
@@ -31,7 +33,7 @@ export default (teacher: Teacher, history: History) => {
             history: history
         });
     }
-    
+
     return React.createElement(
         () => <div>The component for {teacher.name} has not been created yet.</div>
     );

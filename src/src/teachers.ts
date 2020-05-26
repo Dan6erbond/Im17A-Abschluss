@@ -36,6 +36,7 @@ const t: Teacher[] = [
     },
     {
         name: "Geneviève Gross",
+        page: "GGross",
         path: "dshb4LF",
         img: "./res/img/teachers/gross_genevieve.jpg"
     },
