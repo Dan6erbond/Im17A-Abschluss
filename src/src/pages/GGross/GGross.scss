@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.g-gross{
+  .icon:hover{
+    cursor: pointer;
+  }
+  .laaxopen{
+    background: url("/res/img/ggross/laaxopen.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+  }
+  .memes{
+    color: white;
+    text-align: center;
+    font-family: "Bangers", cursive;
+
+  }
+}
