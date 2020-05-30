@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 .g-gross{
+  font-family: "Bangers", cursive;
+  text-align: center;
   .icon:hover{
     cursor: pointer;
   }
@@ -11,9 +13,13 @@
     height: 100vh;
   }
   .memes{
-    color: white;
-    text-align: center;
-    font-family: "Bangers", cursive;
-
+    padding: 10px;
+    .gallery{
+      }
   }
+}
+.meme-content{
+  height:100vh;
+  width:100vw;
+  background-color: rgba(179, 178, 175, .5);
 }
