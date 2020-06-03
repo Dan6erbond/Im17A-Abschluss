@@ -1,5 +1,4 @@
 import * as React from "react";
-import {Col} from "react-bootstrap";
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons';
 import Gallery from "react-photo-gallery";
 import MemeCard from './Memes/MemeCard';
@@ -43,7 +42,7 @@ render(){
               </div>
             </Banner>
         </ParallaxLayer>
-        <ParallaxLayer offset={1.1} speed={-0.1}>
+        <ParallaxLayer offset={2.1} speed={-0.1}>
           <div className="memes">
             <h2>Juicy Memes</h2>
             <div className="gallery">
@@ -51,23 +50,25 @@ render(){
             </div>
           </div>
         </ParallaxLayer>
-        <ParallaxLayer offset={1.8} speed={0.6}>
-          <div className="scrollBtn" onClick={() => ref.current!!.scrollTo(2.3)}>
-            <FontAwesomeIcon className="icon" icon={faArrowCircleDown} style={{height:"55px", width:"55px"}}/>
-            <p>Scrollen</p>
+        <ParallaxLayer offset={1.1} speed={0.2}>
+          <div className="trampoline">
+            <h2>Trampolin</h2>
           </div>
         </ParallaxLayer>
-        <ParallaxLayer offset={2.3} speed={-0.2}>
-        <div className="trampoline">
-          <h2>Trampolin</h2>
-        </div>
+        <ParallaxLayer offset={1.2} speed={-0.2}>
+            <div className="scrollBtn" onClick={() => ref.current!!.scrollTo(2.1)}>
+              <FontAwesomeIcon className="icon" icon={faArrowCircleDown} style={{height:"55px", width:"55px"}}/>
+              <p>Scrollen</p>
+            </div>
         </ParallaxLayer>
       </Parallax>
     </div>
     :
     <div className="meme-content" onClick={() => this.setState({fullscreen : false})}>
-    <MemeCard meme={meme[0]} />
-    </div>
+      <div className="fullscreen">
+        <MemeCard meme={meme[0]} />
+      </div>
+  </div>
   );
 }
 
