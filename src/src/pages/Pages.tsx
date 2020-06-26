@@ -9,6 +9,7 @@ import RWeidmann from "./RWeidmann/RWeidmann";
 import LMeyer from "./LMeyer/LMeyer";
 import AFlick from "./AFlick/AFlick";
 import LKlink from "./LKlink/LKlink";
+import Banner from "../components/Banner/Banner";
 
 type Page = {
     [key: string]: any;
@@ -31,8 +32,10 @@ export default (teacher: Teacher, history: History) => {
             history: history
         });
     }
-    
-    return React.createElement(
-        () => <div>The component for {teacher.name} has not been created yet.</div>
-    );
+
+    return React.createElement(() => (
+      <Banner
+        text={`👷🏽‍♂️🚧 The component for ${teacher.name} is under construction. 🚧`}
+      />
+    ));
 }
