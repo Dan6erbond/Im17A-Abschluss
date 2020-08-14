@@ -1,40 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
-body{
+body {
   min-height: 100vh;
   min-width: 100vw;
 }
-.g-gross{
+
+.g-gross {
   font-family: "Bangers", cursive;
   text-align: center;
-  .icon:hover{
+
+  .icon:hover {
     cursor: pointer;
   }
-  .memes{
+
+  .memes {
     padding: 10px;
-    .gallery{
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 4px;
+
+      .column {
+        flex: 50%;
+        padding: 0 4px;
+
+        img {
+          vertical-align: middle;
+          width: 25%;
+        }
       }
+    }
+  }
+
+  .footnote{
+    width: 50%;
+    margin: 0 auto;
   }
 }
-.meme-content{
-  height:100vh;
-  width:100%;
+
+.meme-content {
+  height: 100vh;
+  width: 100%;
   background-color: rgba(179, 178, 175, .5);
-  .fullscreen{
-      height:inherit;
-      width:100%;
-    .closeButton{
+
+  .fullscreen {
+    height: inherit;
+    width: 100%;
+
+    .closeButton {
       float: right;
-      margin:50px;
+      margin: 50px;
     }
-    .fullscreenPicture{
+
+    .fullscreenPicture {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       height: 90%;
       background-color: rgba(89, 89, 89, 0.4);
       position: relative;
-      img{
+
+      img {
         background-color: transparent;
         padding: 5px;
         position: absolute;
@@ -48,5 +75,4 @@ body{
       }
     }
   }
-
 }
