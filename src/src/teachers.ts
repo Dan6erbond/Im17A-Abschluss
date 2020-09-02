@@ -26,7 +26,8 @@ const t: Teacher[] = [
     {
         name: "Loredana Arleo",
         path: "SWH6Yjq",
-        img: "./res/img/teachers/arleo_loredana.jpg"
+        img: "./res/img/teachers/arleo_loredana.jpg",
+        page: "LArleo"
     },
     {
         name: "Daniel Schneeberger",

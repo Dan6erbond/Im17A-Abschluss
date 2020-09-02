@@ -9,6 +9,7 @@ import RWeidmann from "./RWeidmann/RWeidmann";
 import LMeyer from "./LMeyer/LMeyer";
 import AFlick from "./AFlick/AFlick";
 import LKlink from "./LKlink/LKlink";
+import LArleo from "./LArleo/LArleo";
 import Banner from "../components/Banner/Banner";
 
 type Page = {
@@ -22,7 +23,8 @@ const Pages: Page = {
     RWeidmann: RWeidmann,
     LMeyer: LMeyer,
     AFlick: AFlick,
-    LKlink: LKlink
+    LKlink: LKlink,
+    LArleo: LArleo,
 };
 
 export default (teacher: Teacher, history: History) => {
